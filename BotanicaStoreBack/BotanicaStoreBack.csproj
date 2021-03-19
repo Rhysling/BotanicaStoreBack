@@ -5,7 +5,69 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <Compile Remove="Models\**" />
+    <Compile Remove="Repositories\Generated\Ro\**" />
+    <Compile Remove="Repositories\Generated\Rw\**" />
+    <Compile Remove="Services\**" />
+    <Content Remove="Models\**" />
+    <Content Remove="Repositories\Generated\Ro\**" />
+    <Content Remove="Repositories\Generated\Rw\**" />
+    <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Repositories\Generated\Ro\**" />
+    <EmbeddedResource Remove="Repositories\Generated\Rw\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Models\**" />
+    <None Remove="Repositories\Generated\Ro\**" />
+    <None Remove="Repositories\Generated\Rw\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Models\Core\AppSettings.cs" />
+    <Compile Include="Models\Core\NameValueItem.cs" />
+    <Compile Include="Models\Generated\Enums\GeneraEnum.cs" />
+    <Compile Include="Models\Generated\Enums\PlantStatusEnum.cs" />
+    <Compile Include="Models\Generated\PocosRo\PlantView.cs" />
+    <Compile Include="Models\Generated\PocosRw\Calendar.cs" />
+    <Compile Include="Models\Generated\PocosRw\Key.cs" />
+    <Compile Include="Models\Generated\PocosRw\Plant.cs" />
+    <Compile Include="Models\_Generator\_NPocoT4.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>_NPocoT4.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\Generated\Rw\CalendarDb.cs" />
+    <Compile Include="Repositories\Generated\Rw\KeyDb.cs" />
+    <Compile Include="Repositories\Generated\Rw\PlantDb.cs" />
+    <Compile Include="Services\FiltersAttributes\TypescriptModelAttribute.cs" />
+    <Compile Include="Services\Settings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Models\_Generator\NPoco.Core.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.Enum.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.ITypeScript.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.Ops.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.PocoRo.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.PocoRw.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.RepoIdentity.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.RepoKeyed.ttinclude" />
+    <None Include="Models\_Generator\NPoco.Gen.RepoNoKey.ttinclude" />
+    <None Include="Models\_Generator\_NPocoT4.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>_NPocoT4.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NPoco" Version="5.1.2" />
+    <PackageReference Include="NPoco.SqlServer" Version="5.1.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>
