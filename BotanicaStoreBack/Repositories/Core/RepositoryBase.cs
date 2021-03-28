@@ -4,7 +4,7 @@ using BotanicaStoreBack.Models.Core;
 using Microsoft.Extensions.Options;
 using NPoco;
 
-namespace BotanicaStoreBack.Repositories
+namespace BotanicaStoreBack.Repos
 {
 	public abstract class RepositoryBase : IDisposable
 	{
@@ -15,13 +15,13 @@ namespace BotanicaStoreBack.Repositories
 		public RepositoryBase(IOptions<AppSettings> options)
 		{
 			opts = options.Value;
-			db = new NPoco.Database(opts.BotanicaStoreBack_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+			db = new NPoco.Database(opts.BotanicaStoreDb_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
 		}
 
 		public RepositoryBase(AppSettings options)
 		{
 			opts = options;
-			db = new NPoco.Database(opts.BotanicaStoreBack_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+			db = new NPoco.Database(opts.BotanicaStoreDb_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
 		}
 
 

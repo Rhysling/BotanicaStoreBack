@@ -4,7 +4,7 @@ using BotanicaStoreBack.Models;
 using BotanicaStoreBack.Models.Core;
 using Microsoft.Extensions.Options;
 
-namespace BotanicaStoreBack.Repositories
+namespace BotanicaStoreBack.Repos
 { 
 	public class KeyDb : RepositoryBase
 	{

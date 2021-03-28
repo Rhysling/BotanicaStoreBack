@@ -8,7 +8,7 @@
 	_providerName = "System.Data.SqlClient";
 
 	Namespace = ApplicationName + ".Models";
-	RepositoryNamespace = ApplicationName + ".Repositories";
+	RepositoryNamespace = ApplicationName + ".Repos";
 	RepoName = ApplicationName + "DB";
 
 	ClassPrefix = "";

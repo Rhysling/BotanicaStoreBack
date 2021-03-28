@@ -1,12 +1,10 @@
-
-
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
 using BotanicaStoreBack.Models;
 using BotanicaStoreBack.Models.Core;
 
-namespace BotanicaStoreBack.Repositories
+namespace BotanicaStoreBack.Repos
 { 
 	public class CalendarDb : RepositoryBase
 	{

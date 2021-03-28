@@ -16,7 +16,7 @@ namespace BotanicaStoreBack.Models
 		//}
 
 		public BotanicaStoreBackDB(AppSettings settings)
-			: base(settings.BotanicaStoreBack_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance)
+			: base(settings.BotanicaStoreDb_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance)
 		{
 			CommonConstruct();
 		}
