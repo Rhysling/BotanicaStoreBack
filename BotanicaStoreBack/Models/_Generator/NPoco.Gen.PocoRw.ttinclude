@@ -15,8 +15,8 @@ using <#=ApplicationName #>.Services.FiltersAttributes;
 
 namespace <#=Namespace #>
 {
-	<#+				if (makeTsInterface) { #>[TypeScriptModel]
-	<#+				} #>[TableName("<#=tbl.Name#>")]
+	[TypeScriptModel]
+	[TableName("<#=tbl.Name#>")]
 <#+ if (tbl.PK != null) { #>
 	[PrimaryKey("<#=String.Join(", ",tbl.PK.Select(x => x.Name))#>", AutoIncrement = <#=autoIncrement#>)]
 <#+ } #>

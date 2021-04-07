@@ -11,6 +11,7 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 
 namespace BotanicaStoreBack.Models
 {
+	[TypeScriptModel]
 	[TableName("Calendar")]
 	[PrimaryKey("ItemId", AutoIncrement = true)]
 	[ExplicitColumns]

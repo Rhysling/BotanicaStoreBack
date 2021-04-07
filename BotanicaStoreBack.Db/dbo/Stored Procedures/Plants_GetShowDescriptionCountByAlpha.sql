@@ -1,0 +1,52 @@
+﻿CREATE PROCEDURE [dbo].[Plants_GetShowDescriptionCountByAlpha]
+
+AS
+
+CREATE TABLE #tp (Alph char(1))
+INSERT INTO #tp (Alph)
+	SELECT 'A' UNION
+	SELECT 'B' UNION
+	SELECT 'C' UNION
+	SELECT 'D' UNION
+	SELECT 'E' UNION
+	SELECT 'F' UNION
+	SELECT 'G' UNION
+	SELECT 'H' UNION
+	SELECT 'I' UNION
+	SELECT 'J' UNION
+	SELECT 'K' UNION
+	SELECT 'L' UNION
+	SELECT 'M' UNION
+	SELECT 'N' UNION
+	SELECT 'O' UNION
+	SELECT 'P' UNION
+	SELECT 'Q' UNION
+	SELECT 'R' UNION
+	SELECT 'S' UNION
+	SELECT 'T' UNION
+	SELECT 'U' UNION
+	SELECT 'V' UNION
+	SELECT 'W' UNION
+	SELECT 'X' UNION
+	SELECT 'Y' UNION
+	SELECT 'Z'
+
+SELECT
+	#tp.Alph AS Alph, p.PlantCount
+FROM
+	[#tp] LEFT OUTER JOIN
+(
+SELECT
+	Left(Plants.Genus, 1) AS Alph, COUNT(Plants.PlantId) AS PlantCount
+FROM
+	Plants
+WHERE
+	(Plants.ShowDescription = 1)
+GROUP BY
+	LEFT(Plants.Genus, 1)
+) AS p
+ON [#tp].Alph = p.Alph
+ORDER BY
+	Alph
+
+RETURN

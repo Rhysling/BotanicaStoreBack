@@ -34,18 +34,37 @@ namespace BotanicaStoreBack
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddCors(options =>
-			{
-				options.AddPolicy(allowedOrigins,
-					builder =>
-					{
-						builder.WithOrigins("https://botanicaplants.com",
-																"https://www.botanicaplants.com",
-																"http://localhost:5050")
-																.AllowAnyHeader()
-																.AllowAnyMethod();
-					});
-			});
+			//services.AddCors(options =>
+			//{
+			//	options.AddDefaultPolicy(
+			//			builder =>
+			//			{
+			//				builder.WithOrigins("https://botanicaplants.com",
+			//														"http://localhost:5050");
+			//			});
+			//});
+
+			//services.AddCors(options =>
+			//{
+			//	options.AddPolicy(allowedOrigins, builder =>
+			//		{
+			//			builder.WithOrigins("https://botanicaplants.com",
+			//													"https://www.botanicaplants.com",
+			//													"http://localhost:5050")
+			//													.AllowAnyHeader()
+			//													.AllowAnyMethod();
+			//		});
+			//});
+
+			//services.AddCors(options =>
+			//{
+			//	options.AddPolicy(allowedOrigins, builder =>
+			//	{
+			//		builder.AllowAnyOrigin()
+			//					 .AllowAnyHeader()
+			//					 .AllowAnyMethod();
+			//	});
+			//});
 
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 			.AddJwtBearer(options =>
@@ -64,6 +83,7 @@ namespace BotanicaStoreBack
 
 			services.Configure<AppSettings>(Configuration);
 			services.AddTransient<IUserDb, UserDb>();
+			services.AddTransient<IvwListedPlantDb, vwListedPlantDb>();
 
 			services.AddControllers();
 			//services.AddHttpClient();
@@ -73,11 +93,10 @@ namespace BotanicaStoreBack
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
-			{
 				app.UseDeveloperExceptionPage();
-			}
 
-			app.UseHttpsRedirection();
+			if (!env.IsDevelopment())
+				app.UseHttpsRedirection();
 
 			app.Use(async (context, next) =>
 			{
@@ -104,9 +123,18 @@ namespace BotanicaStoreBack
 			});
 
 			app.UseRouting();
-			app.UseCors(allowedOrigins);
+
+			if (env.IsDevelopment())
+				app.UseCors(builder =>
+				{
+					builder
+					.AllowAnyOrigin()
+					.AllowAnyMethod()
+					.AllowAnyHeader();
+				});
 
 			app.UseAuthentication();
+			app.UseAuthorization();
 
 			Settings.AppSettings = app.ApplicationServices.GetService<AppSettings>();
 

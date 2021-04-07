@@ -26,10 +26,11 @@
   <ItemGroup>
     <Compile Include="Models\Core\AppSettings.cs" />
     <Compile Include="Models\Core\NameValueItem.cs" />
+    <Compile Include="Models\Core\UserClient.cs" />
     <Compile Include="Models\Core\UserLogin.cs" />
     <Compile Include="Models\Generated\Enums\GeneraEnum.cs" />
     <Compile Include="Models\Generated\Enums\PlantStatusEnum.cs" />
-    <Compile Include="Models\Generated\PocosRo\PlantView.cs" />
+    <Compile Include="Models\Generated\PocosRo\vwListedPlant.cs" />
     <Compile Include="Models\Generated\PocosRw\Calendar.cs" />
     <Compile Include="Models\Generated\PocosRw\Key.cs" />
     <Compile Include="Models\Generated\PocosRw\Plant.cs" />
@@ -39,12 +40,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>_NPocoT4.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\Generated\Ro\vwListedPlantDb.cs" />
     <Compile Include="Repositories\Generated\Rw\CalendarDb.cs" />
     <Compile Include="Repositories\Generated\Rw\KeyDb.cs" />
     <Compile Include="Repositories\Generated\Rw\PlantDb.cs" />
     <Compile Include="Repositories\Generated\Rw\UserDb.cs" />
     <Compile Include="Services\FiltersAttributes\AdminAuthorizeAttribute.cs" />
-    <Compile Include="Services\FiltersAttributes\TypescriptModelAttribute.cs" />
+    <Compile Include="Services\FiltersAttributes\TypeScriptModelAttribute.cs" />
     <Compile Include="Services\Settings.cs" />
   </ItemGroup>
 

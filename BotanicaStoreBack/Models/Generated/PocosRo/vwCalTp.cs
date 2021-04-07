@@ -4,6 +4,7 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 
 namespace BotanicaStoreBack.Models
 {
+	[TypeScriptModel]
 	[TableName("vwCalTp")]
 	[ExplicitColumns]
 	public partial class vwCalTp : BotanicaStoreBackDB.Record<vwCalTp>

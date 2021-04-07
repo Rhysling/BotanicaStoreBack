@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>BotanicaStoreBack.Db</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{34592bd7-0385-4a5c-8f96-094e20c4ca6d}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>BotanicaStoreBack.Db</RootNamespace>
+    <AssemblyName>BotanicaStoreBack.Db</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\DummyTestTable.sql" />
+    <Build Include="dbo\Tables\Subscribers.sql" />
+    <Build Include="dbo\Tables\PlantStatusEnum.sql" />
+    <Build Include="dbo\Tables\ResourceItems.sql" />
+    <Build Include="dbo\Tables\ResourceIcons.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\Links.sql" />
+    <Build Include="dbo\Tables\Keys.sql" />
+    <Build Include="dbo\Tables\Plants.sql" />
+    <Build Include="dbo\Tables\Calendar.sql" />
+    <Build Include="dbo\Tables\tpPlantPricesOld.sql" />
+    <Build Include="dbo\Views\vwPlantsTp.sql" />
+    <Build Include="dbo\Views\vwCalTp.sql" />
+    <Build Include="dbo\Views\vwListedPlants.sql" />
+    <Build Include="Security\Network Service.sql" />
+    <Build Include="dbo\Stored Procedures\ResourceItems_Update.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\ResourceItems_TestKeyStringExists.sql" />
+    <Build Include="dbo\Stored Procedures\ResourceItems_SetDeleteStatus.sql" />
+    <Build Include="dbo\Stored Procedures\ResourceItems_GetNewId.sql" />
+    <Build Include="dbo\Stored Procedures\ResourceItems_GetFile.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\ResourceItems_GetByKeyString.sql" />
+    <Build Include="dbo\Stored Procedures\ResourceItems_GetByIncludeDeleted.sql" />
+    <Build Include="dbo\Stored Procedures\ResourceItems_GetById.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\ResourceIcons_GetByFileType.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_UpdateOffered.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_GetShowDescriptionCountByAlpha.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_GetListByIsAvailable.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_GetFeaturedPlant.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_GetCountOfFlags.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_GetById.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_GetAvailableCountByAlpha.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_GetAvailableCount.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_ClearAllFlags.sql" />
+    <Build Include="dbo\Stored Procedures\Plants_AddUpdateItem.sql" />
+    <Build Include="dbo\Stored Procedures\Keys_UpdateItem.sql" />
+    <Build Include="dbo\Stored Procedures\Keys_GetByKeyName.sql" />
+    <Build Include="dbo\Stored Procedures\Calendar_GetNextEventByDate.sql" />
+    <Build Include="dbo\Stored Procedures\Calendar_GetListAfterDate.sql" />
+    <Build Include="dbo\Stored Procedures\Calendar_GetById.sql" />
+    <Build Include="dbo\Stored Procedures\Calendar_DeleteItem.sql" />
+    <Build Include="dbo\Stored Procedures\Calendar_AddUpdateItem.sql" />
+  </ItemGroup>
+</Project>

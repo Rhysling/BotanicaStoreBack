@@ -9,23 +9,19 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 
 namespace BotanicaStoreBack.Models
 {
-	[TableName("PlantFormEnum")]
-	[PrimaryKey("Id", AutoIncrement = false)]
+	[TypeScriptModel]
+	[TableName("tpPlantPricesOld")]
+	[PrimaryKey("PlantId", AutoIncrement = true)]
 	[ExplicitColumns]
-	public partial class PlantFormEnumPoco : BotanicaStoreBackDB.Record<PlantFormEnumPoco>, Repositories.Core.IKeyed<int>
+	public partial class tpPlantPricesOld : BotanicaStoreBackDB.Record<tpPlantPricesOld>
 	{
 		[NPoco.Column]
-		public int Id { get; set; }
+		public int PlantId { get; set; }
 
 		[NPoco.Column]
 		[StringLength(50)]
 		[Required()]
-		public string Name { get; set; }
-
-		[NPoco.Column]
-		[StringLength(50)]
-		[Required()]
-		public string Description { get; set; }
+		public string Offered { get; set; }
 
 	}
 }

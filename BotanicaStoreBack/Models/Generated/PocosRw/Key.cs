@@ -9,6 +9,7 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 
 namespace BotanicaStoreBack.Models
 {
+	[TypeScriptModel]
 	[TableName("Keys")]
 	[PrimaryKey("KeyName", AutoIncrement = false)]
 	[ExplicitColumns]

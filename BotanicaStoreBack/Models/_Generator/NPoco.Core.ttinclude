@@ -91,6 +91,7 @@ string RepoName = "";
 string ClassPrefix = "";
 string ClassSuffix = "";
 string SchemaName = null;
+string DbName = "";
 
 string templateDirectory = @"\Models\_Generator";
 string modelDirectory = @"\Models\Generated";

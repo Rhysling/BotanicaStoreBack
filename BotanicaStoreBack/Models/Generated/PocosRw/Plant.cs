@@ -1,3 +1,5 @@
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 
 namespace BotanicaStoreBack.Models
 {
+	[TypeScriptModel]
 	[TableName("Plants")]
 	[PrimaryKey("PlantId", AutoIncrement = true)]
 	[ExplicitColumns]
@@ -24,6 +27,7 @@ namespace BotanicaStoreBack.Models
 
 		[NPoco.Column]
 		[StringLength(50)]
+		[Required()]
 		public string Species { get; set; }
 
 		[NPoco.Column]
@@ -51,23 +55,21 @@ namespace BotanicaStoreBack.Models
 		public string PlantZone { get; set; }
 
 		[NPoco.Column]
-		public DateTime LastUpdate { get; set; }
+		public bool HasSmallPic { get; set; }
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string Offered { get; set; }
+		[Required()]
+		public string BigPicIds { get; set; }
 
 		[NPoco.Column]
-		public bool IsAvailable { get; set; }
-
-		[NPoco.Column]
-		public bool IsSoldOut { get; set; }
+		public bool IsListed { get; set; }
 
 		[NPoco.Column]
 		public bool IsFeatured { get; set; }
 
 		[NPoco.Column]
-		public bool ShowDescription { get; set; }
+		public DateTime LastUpdate { get; set; }
 
 		[NPoco.Column]
 		[StringLength(2)]

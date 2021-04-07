@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +9,7 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 
 namespace BotanicaStoreBack.Models
 {
+	[TypeScriptModel]
 	[TableName("DummyTestTable")]
 	[PrimaryKey("FirstKey, SecondKey", AutoIncrement = false)]
 	[ExplicitColumns]

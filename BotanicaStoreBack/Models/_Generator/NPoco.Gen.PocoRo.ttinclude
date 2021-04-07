@@ -9,8 +9,8 @@ using <#=ApplicationName #>.Services.FiltersAttributes;
 
 namespace <#=Namespace #>
 {
-	<#+				if (makeTsInterface) { #>[TypeScriptModel]
-	<#+				} #>[TableName("<#=tbl.Name#>")]
+	[TypeScriptModel]
+	[TableName("<#=tbl.Name#>")]
 	[ExplicitColumns]
 	public partial class <#=tbl.ClassName#> <#+ if (GenerateOperations)
  { #>: <#=RepoName#>.Record<<#=tbl.ClassName#>><#+ } #>

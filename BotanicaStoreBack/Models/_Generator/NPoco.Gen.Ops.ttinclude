@@ -22,7 +22,7 @@ namespace <#=Namespace #>
 		//}
 
 		public <#=RepoName#>(AppSettings settings)
-			: base(settings.<#=ApplicationName#>_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance)
+			: base(settings.<#=DbName#>_ConnectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance)
 		{
 			CommonConstruct();
 		}

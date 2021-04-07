@@ -4,7 +4,9 @@
 	ApplicationName = "BotanicaStoreBack";
 
 	//ConnectionStringName = "ConStr_For_T4";
-	_connectionString = "Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;";
+	DbName = "BotanicaStoreDb";
+
+	_connectionString = "Server=localhost;Database=" + DbName + ";Trusted_Connection=True;";
 	_providerName = "System.Data.SqlClient";
 
 	Namespace = ApplicationName + ".Models";

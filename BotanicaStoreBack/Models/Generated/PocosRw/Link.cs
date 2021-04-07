@@ -9,6 +9,7 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 
 namespace BotanicaStoreBack.Models
 {
+	[TypeScriptModel]
 	[TableName("Links")]
 	[PrimaryKey("LinkId", AutoIncrement = true)]
 	[ExplicitColumns]

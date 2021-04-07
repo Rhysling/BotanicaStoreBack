@@ -42,7 +42,12 @@ namespace BotanicaStoreBack.Controllers.api
       if (user != null)
       {
         var tokenString = GenerateJSONWebToken(user);
-        response = Ok(new { token = tokenString });
+        response = Ok(new UserClient { 
+          Email = user.Email,
+          FullName = user.FullName ?? "",
+          Token = "Bearer " + tokenString,
+          IsAdmin = user.IsAdmin
+        });
       }
 
       return response;
@@ -96,14 +101,14 @@ namespace BotanicaStoreBack.Controllers.api
 
       var claims = new[] {
         new Claim("Email", user.Email),
-        new Claim("FullName", user.FullName),
+        new Claim("FullName", user.FullName ?? ""),
         new Claim("IsAdmin", user.IsAdmin.ToString())
       };
 
       var token = new JwtSecurityToken(opts.Jwt.Issuer,
           opts.Jwt.Issuer,
           claims,
-          expires: DateTime.Now.AddMinutes(120),
+          expires: DateTime.Now.AddDays(10),
           signingCredentials: credentials);
 
       return new JwtSecurityTokenHandler().WriteToken(token);
