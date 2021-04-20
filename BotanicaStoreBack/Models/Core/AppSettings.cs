@@ -10,6 +10,7 @@ namespace BotanicaStoreBack.Models.Core
 		public string BotanicaStoreDb_ConnectionString { get; set; }
 		public string AdminPw { get; set; }
 		public AS_Jwt Jwt { get; set; }
+		public bool IsDev { get; set; }
 	}
 
 	public class AS_Jwt

@@ -59,7 +59,6 @@ namespace BotanicaStoreBack.Models
 
 		[NPoco.Column]
 		[StringLength(50)]
-		[Required()]
 		public string BigPicIds { get; set; }
 
 		[NPoco.Column]
@@ -74,6 +73,10 @@ namespace BotanicaStoreBack.Models
 		[NPoco.Column]
 		[StringLength(2)]
 		public string Flag { get; set; }
+
+		// Computed Columns
+
+		public string LastUpdateFormatted => LastUpdate.CompareTo(DateTime.Now.AddYears(-20)) < 0 ? "None" : LastUpdate.ToString("M/d/yy-h:mmtt");
 
 	}
 }

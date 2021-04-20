@@ -39,17 +39,8 @@ namespace BotanicaStoreBack.Models
 		[NPoco.Column] 
 		public string BigPicIds { get; set; }
 
-		[NPoco.Column] 
-		public bool IsListed { get; set; }
-
-		[NPoco.Column] 
+		[NPoco.Column]
 		public bool IsFeatured { get; set; }
-
-		[NPoco.Column] 
-		public DateTime LastUpdate { get; set; }
-
-		[NPoco.Column] 
-		public string Flag { get; set; }
 
 	}
 }

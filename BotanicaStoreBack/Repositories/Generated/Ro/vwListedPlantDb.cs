@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Extensions.Options;
 using BotanicaStoreBack.Models;
 using BotanicaStoreBack.Models.Core;
@@ -12,6 +13,11 @@ namespace BotanicaStoreBack.Repos
 			: base(options)
 		{
 			//no op.
+		}
+
+		public vwListedPlant FeaturedPlant()
+		{
+			return db.Fetch<vwListedPlant>("WHERE (IsFeatured = 1)").FirstOrDefault();
 		}
 
 		public List<vwListedPlant> All()

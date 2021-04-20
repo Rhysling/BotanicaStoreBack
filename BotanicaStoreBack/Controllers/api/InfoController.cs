@@ -14,24 +14,19 @@ namespace BotanicaStoreBack.Controllers.api
 	[ApiController]
 	public class InfoController : ControllerBase
 	{
-		private readonly AppSettings opts;
+		private readonly IPlantDb db;
 
-		public InfoController(IOptions<AppSettings> options)
+		public InfoController(IPlantDb db)
 		{
-			opts = options.Value;
+			this.db = db;
 		}
 
 		// GET: api/<InfoController>
 		[HttpGet]
-		public IEnumerable<Plant> Get()
+		public List<Plant> Get()
 		{
-			using (var db = new PlantDb(opts))
-			{
-				var p = db.All().Take(5);
-				return p;
-			}
+			return db.All().Take(5).ToList();
 		}
 
-		
 	}
 }

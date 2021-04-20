@@ -95,16 +95,6 @@
       <AnsiNulls>Off</AnsiNulls>
     </Build>
     <Build Include="dbo\Stored Procedures\ResourceIcons_GetByFileType.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_UpdateOffered.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_GetShowDescriptionCountByAlpha.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_GetListByIsAvailable.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_GetFeaturedPlant.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_GetCountOfFlags.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_GetById.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_GetAvailableCountByAlpha.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_GetAvailableCount.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_ClearAllFlags.sql" />
-    <Build Include="dbo\Stored Procedures\Plants_AddUpdateItem.sql" />
     <Build Include="dbo\Stored Procedures\Keys_UpdateItem.sql" />
     <Build Include="dbo\Stored Procedures\Keys_GetByKeyName.sql" />
     <Build Include="dbo\Stored Procedures\Calendar_GetNextEventByDate.sql" />

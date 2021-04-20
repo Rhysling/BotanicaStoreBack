@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>9368808f-3393-4f84-ae4c-1503fa1795b0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +27,8 @@
   <ItemGroup>
     <Compile Include="Models\Core\AppSettings.cs" />
     <Compile Include="Models\Core\NameValueItem.cs" />
+    <Compile Include="Models\Core\PlantPicId.cs" />
+    <Compile Include="Models\Core\PlantToggle.cs" />
     <Compile Include="Models\Core\UserClient.cs" />
     <Compile Include="Models\Core\UserLogin.cs" />
     <Compile Include="Models\Generated\Enums\GeneraEnum.cs" />

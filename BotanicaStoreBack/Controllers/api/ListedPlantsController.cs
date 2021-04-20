@@ -32,5 +32,10 @@ namespace BotanicaStoreBack.Controllers.api
 			return db.All();
 		}
 
+		[Route("[action]")]
+		public vwListedPlant GetFeaturedPlant()
+		{
+			return db.FeaturedPlant();
+		}
 	}
 }

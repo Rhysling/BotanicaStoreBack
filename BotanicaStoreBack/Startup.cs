@@ -22,7 +22,7 @@ namespace BotanicaStoreBack
 {
 	public class Startup
 	{
-		string allowedOrigins = "AllowedOrigins";
+		//string allowedOrigins = "AllowedOrigins";
 
 		public Startup(IConfiguration configuration)
 		{
@@ -83,6 +83,7 @@ namespace BotanicaStoreBack
 
 			services.Configure<AppSettings>(Configuration);
 			services.AddTransient<IUserDb, UserDb>();
+			services.AddTransient<IPlantDb, PlantDb>();
 			services.AddTransient<IvwListedPlantDb, vwListedPlantDb>();
 
 			services.AddControllers();
