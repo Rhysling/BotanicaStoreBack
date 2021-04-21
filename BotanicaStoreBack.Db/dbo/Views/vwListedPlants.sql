@@ -1,5 +1,4 @@
 ﻿
-
 CREATE VIEW [dbo].[vwListedPlants]
 AS
 SELECT       
@@ -16,12 +15,11 @@ SELECT
 	PlantZone, 
 	HasSmallPic, 
 	BigPicIds,
-	IsListed, 
-	IsFeatured, 
-	LastUpdate, 
-	Flag
+	IsFeatured
 FROM
 	dbo.Plants
+WHERE
+	(IsListed = 1)
 
 GO
 EXECUTE sp_addextendedproperty @name = N'MS_DiagramPane1', @value = N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]

@@ -63,6 +63,7 @@
     <Folder Include="dbo\Views\" />
     <Folder Include="Security\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="comparisons" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\DummyTestTable.sql" />
@@ -76,31 +77,13 @@
     <Build Include="dbo\Tables\Plants.sql" />
     <Build Include="dbo\Tables\Calendar.sql" />
     <Build Include="dbo\Tables\tpPlantPricesOld.sql" />
-    <Build Include="dbo\Views\vwPlantsTp.sql" />
-    <Build Include="dbo\Views\vwCalTp.sql" />
     <Build Include="dbo\Views\vwListedPlants.sql" />
     <Build Include="Security\Network Service.sql" />
-    <Build Include="dbo\Stored Procedures\ResourceItems_Update.sql">
-      <AnsiNulls>Off</AnsiNulls>
-    </Build>
-    <Build Include="dbo\Stored Procedures\ResourceItems_TestKeyStringExists.sql" />
-    <Build Include="dbo\Stored Procedures\ResourceItems_SetDeleteStatus.sql" />
-    <Build Include="dbo\Stored Procedures\ResourceItems_GetNewId.sql" />
-    <Build Include="dbo\Stored Procedures\ResourceItems_GetFile.sql">
-      <AnsiNulls>Off</AnsiNulls>
-    </Build>
-    <Build Include="dbo\Stored Procedures\ResourceItems_GetByKeyString.sql" />
-    <Build Include="dbo\Stored Procedures\ResourceItems_GetByIncludeDeleted.sql" />
-    <Build Include="dbo\Stored Procedures\ResourceItems_GetById.sql">
-      <AnsiNulls>Off</AnsiNulls>
-    </Build>
-    <Build Include="dbo\Stored Procedures\ResourceIcons_GetByFileType.sql" />
-    <Build Include="dbo\Stored Procedures\Keys_UpdateItem.sql" />
-    <Build Include="dbo\Stored Procedures\Keys_GetByKeyName.sql" />
-    <Build Include="dbo\Stored Procedures\Calendar_GetNextEventByDate.sql" />
-    <Build Include="dbo\Stored Procedures\Calendar_GetListAfterDate.sql" />
-    <Build Include="dbo\Stored Procedures\Calendar_GetById.sql" />
-    <Build Include="dbo\Stored Procedures\Calendar_DeleteItem.sql" />
-    <Build Include="dbo\Stored Procedures\Calendar_AddUpdateItem.sql" />
+    <Build Include="dbo\Tables\PotSizes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="comparisons\Schema_BPC_to_project.scmp" />
+    <None Include="comparisons\Schema_project_to_MIA.scmp" />
+    <None Include="comparisons\Data_BPC_to_MIA.dcmp" />
   </ItemGroup>
 </Project>

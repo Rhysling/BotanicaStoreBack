@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,11 +22,18 @@ namespace BotanicaStoreBack.Controllers.api
 			this.db = db;
 		}
 
+		//// GET: api/<InfoController>
+		//[HttpGet]
+		//public List<Plant> Get()
+		//{
+		//	return db.All().Take(5).ToList();
+		//}
+
 		// GET: api/<InfoController>
 		[HttpGet]
-		public List<Plant> Get()
+		public string Get()
 		{
-			return db.All().Take(5).ToList();
+			return Directory.GetCurrentDirectory();
 		}
 
 	}
