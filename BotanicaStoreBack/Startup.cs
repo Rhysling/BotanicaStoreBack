@@ -85,6 +85,7 @@ namespace BotanicaStoreBack
 			services.AddTransient<IUserDb, UserDb>();
 			services.AddTransient<IPlantDb, PlantDb>();
 			services.AddTransient<IvwListedPlantDb, vwListedPlantDb>();
+			services.AddTransient<IvwPlantPriceSummaryDb, vwPlantPriceSummaryDb>();
 
 			services.AddControllers();
 			//services.AddHttpClient();

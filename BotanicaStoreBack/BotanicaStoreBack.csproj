@@ -34,9 +34,13 @@
     <Compile Include="Models\Generated\Enums\GeneraEnum.cs" />
     <Compile Include="Models\Generated\Enums\PlantStatusEnum.cs" />
     <Compile Include="Models\Generated\PocosRo\vwListedPlant.cs" />
+    <Compile Include="Models\Generated\PocosRo\vwPlantPriceMatrix.cs" />
+    <Compile Include="Models\Generated\PocosRo\vwPlantPriceSummary.cs" />
     <Compile Include="Models\Generated\PocosRw\Calendar.cs" />
     <Compile Include="Models\Generated\PocosRw\Key.cs" />
     <Compile Include="Models\Generated\PocosRw\Plant.cs" />
+    <Compile Include="Models\Generated\PocosRw\PlantPrice.cs" />
+    <Compile Include="Models\Generated\PocosRw\PotSize.cs" />
     <Compile Include="Models\Generated\PocosRw\User.cs" />
     <Compile Include="Models\_Generator\_NPocoT4.cs">
       <DesignTime>True</DesignTime>
@@ -44,6 +48,8 @@
       <DependentUpon>_NPocoT4.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\Generated\Ro\vwListedPlantDb.cs" />
+    <Compile Include="Repositories\Generated\Ro\vwPlantPriceMatrixDb.cs" />
+    <Compile Include="Repositories\Generated\Ro\vwPlantPriceSummaryDb.cs" />
     <Compile Include="Repositories\Generated\Rw\CalendarDb.cs" />
     <Compile Include="Repositories\Generated\Rw\KeyDb.cs" />
     <Compile Include="Repositories\Generated\Rw\PlantDb.cs" />

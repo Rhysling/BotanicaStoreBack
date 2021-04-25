@@ -17,3 +17,10 @@
     CONSTRAINT [PK_tblPlantMaster] PRIMARY KEY CLUSTERED ([PlantId] ASC)
 );
 
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Plants_GenusSpecies]
+    ON [dbo].[Plants]([Genus] ASC, [Species] ASC);
+

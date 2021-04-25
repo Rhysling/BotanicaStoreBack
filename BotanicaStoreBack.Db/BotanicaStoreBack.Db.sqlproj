@@ -64,6 +64,7 @@
     <Folder Include="Security\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="comparisons" />
+    <Folder Include="dbo\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\DummyTestTable.sql" />
@@ -80,6 +81,10 @@
     <Build Include="dbo\Views\vwListedPlants.sql" />
     <Build Include="Security\Network Service.sql" />
     <Build Include="dbo\Tables\PotSizes.sql" />
+    <Build Include="dbo\Tables\PlantPrices.sql" />
+    <Build Include="dbo\Views\vwPlantPriceSummary.sql" />
+    <Build Include="dbo\Views\vwPlantPriceMatrix.sql" />
+    <Build Include="dbo\Functions\fnPricesAvailable_ByPlant.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="comparisons\Schema_BPC_to_project.scmp" />

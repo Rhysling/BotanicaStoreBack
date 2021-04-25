@@ -108,8 +108,9 @@ namespace BotanicaStoreBack.Controllers.api
       var token = new JwtSecurityToken(opts.Jwt.Issuer,
           opts.Jwt.Issuer,
           claims,
-          expires: DateTime.Now.AddDays(10),
-          signingCredentials: credentials);
+					//expires: DateTime.Now.AddSeconds(30),
+					expires: DateTime.Now.AddDays(10),
+					signingCredentials: credentials);
 
       return new JwtSecurityTokenHandler().WriteToken(token);
     }
