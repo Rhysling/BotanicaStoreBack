@@ -9,7 +9,9 @@ namespace BotanicaStoreBack.Models.Core
 	{
 		public string BotanicaStoreDb_ConnectionString { get; set; }
 		public string AdminPw { get; set; }
+		public double TaxRate { get; set; }
 		public AS_Jwt Jwt { get; set; }
+		public AS_Mailgun Mailgun { get; set; }
 		public bool IsDev { get; set; }
 	}
 
@@ -17,5 +19,13 @@ namespace BotanicaStoreBack.Models.Core
 	{
 		public string Key { get; set; }
 		public string Issuer { get; set; }
+	}
+
+	public class AS_Mailgun
+	{
+		public string Authorization { get; set; }
+		public string BaseUrl { get; set; }
+		public string Domain { get; set; }
+		public string FromEmail { get; set; }
 	}
 }

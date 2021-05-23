@@ -5,10 +5,16 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 namespace BotanicaStoreBack.Models
 {
 	[TypeScriptModel]
-	[TableName("vwPlantPriceMatrix")]
+	[TableName("vwPlantsAvailable")]
 	[ExplicitColumns]
-	public partial class vwPlantPriceMatrix : BotanicaStoreBackDB.Record<vwPlantPriceMatrix>
+	public partial class vwPlantsAvailable : BotanicaStoreBackDB.Record<vwPlantsAvailable>
 	{
+		[NPoco.Column] 
+		public int PlantId { get; set; }
+
+		[NPoco.Column] 
+		public string PlantName { get; set; }
+
 		[NPoco.Column] 
 		public int PotSizeId { get; set; }
 
@@ -21,14 +27,11 @@ namespace BotanicaStoreBack.Models
 		[NPoco.Column] 
 		public int SortOrder { get; set; }
 
-		[NPoco.Column] 
-		public int PlantId { get; set; }
+		[NPoco.Column]
+		public decimal Price { get; set; }
 
-		[NPoco.Column] 
-		public decimal? Price { get; set; }
 
-		[NPoco.Column] 
-		public bool IsAvailable { get; set; }
-
+		public string QtyEntered { get; set; }
+		public bool? IsValid { get; set; }
 	}
 }

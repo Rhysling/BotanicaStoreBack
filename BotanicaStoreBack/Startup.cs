@@ -1,6 +1,7 @@
 using BotanicaStoreBack.Models.Core;
 using BotanicaStoreBack.Repos;
 using BotanicaStoreBack.Services;
+using BotanicaStoreBack.Services.Mailer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -84,8 +85,14 @@ namespace BotanicaStoreBack
 			services.Configure<AppSettings>(Configuration);
 			services.AddTransient<IUserDb, UserDb>();
 			services.AddTransient<IPlantDb, PlantDb>();
+			services.AddTransient<PlantPriceDb>();
 			services.AddTransient<IvwListedPlantDb, vwListedPlantDb>();
-			services.AddTransient<IvwPlantPriceSummaryDb, vwPlantPriceSummaryDb>();
+			services.AddTransient<PlantPricingDb>();
+			services.AddTransient<WishListDb>();
+			services.AddTransient<CalendarDb>();
+			services.AddTransient<vwWishListEmailDb>();
+
+			services.AddHttpClient<MailgunService>();
 
 			services.AddControllers();
 			//services.AddHttpClient();

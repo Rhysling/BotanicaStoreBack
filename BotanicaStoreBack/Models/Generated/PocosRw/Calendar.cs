@@ -21,7 +21,7 @@ namespace BotanicaStoreBack.Models
 		public int ItemId { get; set; }
 
 		[NPoco.Column]
-		public DateTime? BeginDate { get; set; }
+		public DateTime BeginDate { get; set; }
 
 		[NPoco.Column]
 		public DateTime? EndDate { get; set; }
@@ -43,7 +43,13 @@ namespace BotanicaStoreBack.Models
 		public string Description { get; set; }
 
 		[NPoco.Column]
-		public bool? IsSpecial { get; set; }
+		public bool IsSpecial { get; set; }
 
+
+		public string BeginDateFormatted => BeginDate.ToString("dddd MMMM d, yyyy");
+
+		public string EndDateFormatted => EndDate.HasValue ?
+			EndDate.Value.ToString("dddd MMMM d, yyyy")
+			: "";
 	}
 }

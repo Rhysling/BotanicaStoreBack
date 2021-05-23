@@ -1,8 +1,10 @@
 ﻿
+
+
 CREATE VIEW [dbo].[vwListedPlants]
 AS
 SELECT       
-	PlantId, 
+	p.PlantId, 
 	Genus,
 	Species, 
 	Common,
@@ -12,12 +14,28 @@ SELECT
 	END AS [Description],
 	PlantSize, 
 	PlantType, 
-	PlantZone, 
+	PlantZone,
+	IsNwNative,
 	HasSmallPic, 
 	BigPicIds,
-	IsFeatured
+	IsFeatured,
+	isnull(a.[Availability], '') AS [Availability]
+
 FROM
-	dbo.Plants
+	Plants p
+
+	LEFT OUTER JOIN
+	(
+	SELECT DISTINCT
+		PlantId,
+		[dbo].[fnPricesAvailable_ByPlant] (PlantId,1) AS [Availability]
+	FROM
+		PlantPrices
+	WHERE
+		(IsAvailable = 1)
+	) a
+	ON (p.PlantId = a.PlantId)
+
 WHERE
 	(IsListed = 1)
 

@@ -33,6 +33,9 @@ namespace BotanicaStoreBack.Models
 		[NPoco.Column] 
 		public string PlantZone { get; set; }
 
+		[NPoco.Column]
+		public bool IsNwNative { get; set; }
+
 		[NPoco.Column] 
 		public bool HasSmallPic { get; set; }
 
@@ -42,5 +45,7 @@ namespace BotanicaStoreBack.Models
 		[NPoco.Column]
 		public bool IsFeatured { get; set; }
 
+		[NPoco.Column]
+		public string Availability { get; set; }
 	}
 }

@@ -6,9 +6,9 @@ using BotanicaStoreBack.Models.Core;
 
 namespace BotanicaStoreBack.Repos
 { 
-	public class vwPlantPriceMatrixDb : RepositoryBase
+	public class vwPlantsAvailableDb : RepositoryBase
 	{
-		public vwPlantPriceMatrixDb(IOptions<AppSettings> options)
+		public vwPlantsAvailableDb(IOptions<AppSettings> options)
 			: base(options)
 		{
 			//no op.

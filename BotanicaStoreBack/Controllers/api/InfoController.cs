@@ -15,9 +15,9 @@ namespace BotanicaStoreBack.Controllers.api
 	[ApiController]
 	public class InfoController : ControllerBase
 	{
-		private readonly IPlantDb db;
+		private readonly CalendarDb db;
 
-		public InfoController(IPlantDb db)
+		public InfoController(CalendarDb db)
 		{
 			this.db = db;
 		}
@@ -31,9 +31,10 @@ namespace BotanicaStoreBack.Controllers.api
 
 		// GET: api/<InfoController>
 		[HttpGet]
-		public string Get()
+		public List<Calendar> Get()
 		{
-			return Directory.GetCurrentDirectory();
+			//return Directory.GetCurrentDirectory();
+			return db.AllFuture();
 		}
 
 	}

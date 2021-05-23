@@ -1,5 +1,7 @@
 ﻿
 
+
+
 CREATE FUNCTION [dbo].[fnPricesAvailable_ByPlant]
 	(
 		@PlantId as int,
@@ -12,7 +14,7 @@ BEGIN
 	SET @List = '';
 
 	SELECT
-		@List = @List + ps.PotShorthand + '-$' + CAST(pp.Price AS varchar) + ',' 
+		@List = @List + ps.PotShorthand + '-$' + CAST(pp.Price AS varchar) + ' / ' 
 
 	FROM
 		PlantPrices pp
@@ -27,9 +29,9 @@ BEGIN
 	ORDER BY
 		SortOrder;
 
-	--trim off extra comma at end
+	--trim off extra comma AND SPACE at end
 	IF (@List <> '')
-	SET @List = LEFT(@List, LEN(@List) - 1)
+		SET @List = LEFT(@List, LEN(@List) - 2)
 	
 	RETURN @List
 	

@@ -15,18 +15,25 @@ namespace BotanicaStoreBack.Controllers.api.admin
 	[ApiController]
 	public class PlantPriceSummaryController : ControllerBase
 	{
-		private readonly vwPlantPriceSummaryDb db;
+		private readonly PlantPricingDb db;
 
-		public PlantPriceSummaryController(IvwPlantPriceSummaryDb db)
+		public PlantPriceSummaryController(PlantPricingDb db)
 		{
-			this.db = (vwPlantPriceSummaryDb)db;
+			this.db = (PlantPricingDb)db;
 		}
 
-		// GET: api/admin/<PlantController>
-		[HttpGet]
-		public List<vwPlantPriceSummary> Get()
+		// GET: api/admin/PlantPriceSummary/GetSummary
+		[HttpGet("[action]")]
+		public List<vwPlantPriceSummary> GetSummary()
 		{
-			return db.All();
+			return db.AllSummaries();
+		}
+
+		// GET: api/admin/PlantPriceSummary/GetSummary
+		[HttpGet("[action]")]
+		public List<vwPlantPriceMatrix> GetMatrix(int plantId)
+		{
+			return db.GetMatrixForPlant(plantId);
 		}
 	}
 }

@@ -4,11 +4,14 @@ using BotanicaStoreBack.Services.FiltersAttributes;
 namespace BotanicaStoreBack.Models
 {
 	[TypeScriptModel]
-	[TableName("PlantPrices")]
-	[PrimaryKey("PlantId, PotSizeId", AutoIncrement = false)]
+	[TableName("WishListItems")]
+	[PrimaryKey("WlId, PlantId, PotSizeId", AutoIncrement = false)]
 	[ExplicitColumns]
-	public partial class PlantPrice : BotanicaStoreBackDB.Record<PlantPrice>
+	public partial class WishListItem : BotanicaStoreBackDB.Record<WishListItem>
 	{
+		[NPoco.Column]
+		public int WlId { get; set; }
+
 		[NPoco.Column]
 		public int PlantId { get; set; }
 
@@ -16,10 +19,10 @@ namespace BotanicaStoreBack.Models
 		public int PotSizeId { get; set; }
 
 		[NPoco.Column]
-		public decimal? Price { get; set; }
+		public decimal Price { get; set; }
 
 		[NPoco.Column]
-		public bool IsAvailable { get; set; }
+		public int Qty { get; set; }
 
 	}
 }

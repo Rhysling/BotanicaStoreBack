@@ -6,15 +6,8 @@ using BotanicaStoreBack.Models.Core;
 
 namespace BotanicaStoreBack.Repos
 { 
-	public class vwPlantPriceMatrixDb : RepositoryBase
+	public class vwWishListEmailItemDb : RepositoryBase
 	{
-		public vwPlantPriceMatrixDb(IOptions<AppSettings> options)
-			: base(options)
-		{
-			//no op.
-		}
-
-		// **** SEE vwPlantPricingDb ****
-
+		// Placeholder
 	}
 }	

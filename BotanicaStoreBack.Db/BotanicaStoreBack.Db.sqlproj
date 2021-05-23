@@ -83,8 +83,13 @@
     <Build Include="dbo\Tables\PotSizes.sql" />
     <Build Include="dbo\Tables\PlantPrices.sql" />
     <Build Include="dbo\Views\vwPlantPriceSummary.sql" />
-    <Build Include="dbo\Views\vwPlantPriceMatrix.sql" />
     <Build Include="dbo\Functions\fnPricesAvailable_ByPlant.sql" />
+    <Build Include="dbo\Tables\WishLists.sql" />
+    <Build Include="dbo\Tables\WishListItems.sql" />
+    <Build Include="dbo\Views\vwWishListFlat.sql" />
+    <Build Include="dbo\Views\vwPlantsAvailable.sql" />
+    <Build Include="dbo\Views\vwWishListEmailItems.sql" />
+    <Build Include="dbo\Views\vwWishListEmail.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="comparisons\Schema_BPC_to_project.scmp" />

@@ -42,11 +42,13 @@ namespace BotanicaStoreBack.Controllers.api
       if (user != null)
       {
         var tokenString = GenerateJSONWebToken(user);
-        response = Ok(new UserClient { 
+        response = Ok(new UserClient {
+          UserId = user.UserId,
           Email = user.Email,
           FullName = user.FullName ?? "",
           Token = "Bearer " + tokenString,
-          IsAdmin = user.IsAdmin
+          IsAdmin = user.IsAdmin,
+          TaxRate = opts.TaxRate
         });
       }
 
@@ -69,14 +71,16 @@ namespace BotanicaStoreBack.Controllers.api
       if (isAmin && ((user is null) || (login.Pw != opts.AdminPw)))
         return null;
 
+      DateTime nw = DateTime.Now;
+
       if (user is null)
       {
         user = new User {
           Email = login.Email,
           FullName = String.IsNullOrWhiteSpace(login.FullName) ? null : login.FullName,
           IsAdmin = false,
-          CreatedDate = DateTime.Now,
-          LastLoginDate = DateTime.Now,
+          CreatedDate = nw,
+          LastLoginDate = nw,
           LoginCount = 1
         };
       }
@@ -85,7 +89,7 @@ namespace BotanicaStoreBack.Controllers.api
         if (!String.IsNullOrWhiteSpace(login.FullName))
           user.FullName = login.FullName;
 
-        user.LastLoginDate = DateTime.Now;
+        user.LastLoginDate = nw;
         user.LoginCount += 1;
 			}
 
@@ -100,6 +104,7 @@ namespace BotanicaStoreBack.Controllers.api
       var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
       var claims = new[] {
+        new Claim("UserId", user.UserId.ToString()),
         new Claim("Email", user.Email),
         new Claim("FullName", user.FullName ?? ""),
         new Claim("IsAdmin", user.IsAdmin.ToString())

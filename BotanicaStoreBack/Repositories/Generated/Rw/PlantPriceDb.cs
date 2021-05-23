@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BotanicaStoreBack.Models;
 using BotanicaStoreBack.Models.Core;
 using Microsoft.Extensions.Options;
 
 namespace BotanicaStoreBack.Repos
-{ 
+{
 	public class PlantPriceDb : RepositoryBase
 	{
 		public PlantPriceDb(IOptions<AppSettings> options)
@@ -14,15 +15,22 @@ namespace BotanicaStoreBack.Repos
 			//no op.
 		}
 
-		public bool Insert(PlantPrice entity)
+		public List<PlantPrice> GetAllForPlant(int plantId)
 		{
-			db.Insert(entity);
-			return true;
+			return db.Fetch<PlantPrice>("WHERE (PlantId = @0)", plantId);
 		}
 
-		public bool Update(PlantPrice entity)
+		public bool UpdateAllForPlant(int plantId, List<PlantPrice> plantPrices)
 		{
-			db.Update(entity);
+			db.Execute("DELETE FROM PlantPrices WHERE (PlantId = @0)", plantId);
+
+			if ((plantPrices is not null) && plantPrices.Any())
+			{
+				var pp = plantPrices.Where(a => a.Price is not null).Select(a => { a.PlantId = plantId; return a; });
+
+				foreach (var p in pp)
+					db.Save(p);
+			}
 			return true;
 		}
 
@@ -41,27 +49,6 @@ namespace BotanicaStoreBack.Repos
 			return true;
 		}
 
-		public bool Destroy(int id)
-		{
-			db.Delete<PlantPrice>(id);
-			return true;
-		}
-
-
-		public PlantPrice FindBy(int id)
-		{
-			return db.SingleOrDefaultById<PlantPrice>(id);
-		}
-
-		public IEnumerable<PlantPrice> All()
-		{
-			return db.Fetch<PlantPrice>(" ");
-		}
-
-		public int MaxId()
-		{
-			return db.Single<int>("SELECT MAX(Id) FROM [PlantPrices]");
-		}
 	}
 }	
 	

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Extensions.Options;
 using BotanicaStoreBack.Models;
 using BotanicaStoreBack.Models.Core;
 
 namespace BotanicaStoreBack.Repos
-{ 
+{
 	public class CalendarDb : RepositoryBase
 	{
 		public CalendarDb(IOptions<AppSettings> options)
@@ -51,23 +52,30 @@ namespace BotanicaStoreBack.Repos
 		}
 
 
-		public Calendar FindBy(int id)
+		public List<Calendar> AllFuture()
 		{
-			return db.SingleOrDefaultById<Calendar>(id);
+			string refDate = DateTime.Now.ToShortDateString();
+			string sql = $"WHERE (BeginDate >= '{refDate}') OR (EndDate >= '{refDate}') ORDER BY BeginDate";
+			return db.Fetch<Calendar>(sql);
 		}
 
-		public IEnumerable<Calendar> All()
+		public Calendar NextFuture()
 		{
-			return db.Fetch<Calendar>(" ");
+			return AllFuture().FirstOrDefault();
+		}
+
+		public List<Calendar> All()
+		{
+			return db.Fetch<Calendar>("ORDER BY BeginDate DESC");
 		}
 
 
 		public void ReseedKey()
 		{
-			string sql ="DECLARE @@MaxId int; ";
+			string sql = "DECLARE @@MaxId int; ";
 			sql += "SELECT @@MaxId = MAX(ItemId) FROM Calendar; ";
 			sql += "DBCC CHECKIDENT ('Calendar', RESEED, @@MaxId) WITH NO_INFOMSGS;";
-			
+
 			db.Execute(sql);
 		}
 

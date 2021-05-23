@@ -8,6 +8,7 @@
     [PlantSize]      VARCHAR (50)   NULL,
     [PlantType]      VARCHAR (50)   NULL,
     [PlantZone]      VARCHAR (50)   NULL,
+    [IsNwNative]     BIT            CONSTRAINT [DF_Plants_IsNwNative] DEFAULT ((0)) NOT NULL,
     [HasSmallPic]    BIT            CONSTRAINT [DF_Plants_HasSmallPic] DEFAULT ((0)) NOT NULL,
     [BigPicIds]      VARCHAR (50)   CONSTRAINT [DF_Plants_BigPicIds] DEFAULT ('') NOT NULL,
     [IsListed]       BIT            CONSTRAINT [DF_Plants_IsAvailable] DEFAULT ((0)) NOT NULL,
@@ -16,6 +17,8 @@
     [Flag]           VARCHAR (2)    NULL,
     CONSTRAINT [PK_tblPlantMaster] PRIMARY KEY CLUSTERED ([PlantId] ASC)
 );
+
+
 
 
 
