@@ -39,6 +39,9 @@ namespace BotanicaStoreBack.Models
 		[NPoco.Column]
 		public string PotDescription { get; set; }
 
+		[NPoco.Column]
+		public int SortOrder { get; set; }
+
 		[NPoco.Column] 
 		public decimal Price { get; set; }
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -32,7 +33,29 @@ namespace BotanicaStoreBack.Controllers.api
 			settings = opts.Value;
 		}
 
-		// GET: api/WishList/GetCurrentList
+		// GET: api/WishList/GetOrCreateCurrent
+		[HttpGet("[action]")]
+		[Authorize]
+		public WishList GetOrCreateCurrent()
+		{
+			string userId = HttpContext.User.Claims.Where(a => a.Type == "UserId").Select(a => a.Value).FirstOrDefault() ?? "xx";
+
+			if (int.TryParse(userId, out int uid))
+				return dbWL.GetOrCreateCurrent(uid);
+
+			Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+			return null;
+		}
+
+		// GET: api/WishList/GetListById
+		[HttpGet("[action]")]
+		[Authorize]
+		public List<vwWishListFlat> GetListById([FromQuery]int wlId)
+		{
+			return dbWL.GetListById(wlId);
+		}
+
+		// GET: api/WishList/GetCurrentListForUser
 		[HttpGet("[action]")]
 		[Authorize]
 		public List<vwWishListFlat> GetCurrentList()
@@ -68,13 +91,27 @@ namespace BotanicaStoreBack.Controllers.api
 			}
 
 			var wlm = new WishListMessage(wle, settings.TaxRate);
-			var res = await mailgunService.SendWishListMessage(wlm);
 
-			if (res.IsSuccessStatusCode)
+			// ** TODO: production or connected **
+			if (false)
+			{
+				var res = await mailgunService.SendWishListMessage(wlm);
+
+				if (res.IsSuccessStatusCode)
+					dbWL.MarkListEmailed(uid);
+
+				Response.StatusCode = (int)res.StatusCode;
+				return res.ReasonPhrase ?? "";
+			}
+			else
+			{
+				string fn = $"wl_{wle.WlId}_" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
+				string bp = Path.Combine(Directory.GetCurrentDirectory(), "TestEmails", fn);
+				System.IO.File.WriteAllText(bp + ".html", wlm.RenderHtmlBody());
+				System.IO.File.WriteAllText(bp + ".txt", wlm.RenderTextBody());
 				dbWL.MarkListEmailed(uid);
-
-			Response.StatusCode = (int)res.StatusCode;
-			return res.ReasonPhrase ?? "";
+				return await Task.FromResult("Done");
+			}
 		}
 
 
@@ -88,18 +125,11 @@ namespace BotanicaStoreBack.Controllers.api
 
 		// POST: api/WishList/AddUpdateItem
 		[HttpPost("[action]")]
+		[Authorize]
 		public bool AddUpdateItem([FromBody] WishListItem item)
 		{
-			string userId = HttpContext.User.Claims.Where(a => a.Type == "UserId").Select(a => a.Value).FirstOrDefault() ?? "xx";
-
-			if (int.TryParse(userId, out int uid))
-			{
-				dbWL.AddUpdateItem(item, uid);
-				return true;
-			}
-
-			Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-			return false;
+			dbWL.AddUpdateItem(item);
+			return true;
 		}
 
 	}

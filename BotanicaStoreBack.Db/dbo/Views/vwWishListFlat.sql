@@ -1,10 +1,5 @@
 ﻿
 
-
-
-
-
-
 CREATE VIEW [dbo].[vwWishListFlat]
 AS
 SELECT
@@ -18,6 +13,7 @@ SELECT
 	p.Genus + ' ' + p.Species AS PlantName,
 	wi.PotSizeId,
 	ps.PotDescription,
+	ps.SortOrder,
 	wi.Price,
 	wi.Qty,
 	pp.Price AS CurrentPrice,
