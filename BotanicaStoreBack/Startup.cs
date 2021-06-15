@@ -91,6 +91,8 @@ namespace BotanicaStoreBack
 			services.AddTransient<WishListDb>();
 			services.AddTransient<CalendarDb>();
 			services.AddTransient<vwWishListEmailDb>();
+			services.AddTransient<LinkDb>();
+			services.AddTransient<vwShoppingListSummaryDb>();
 
 			services.AddHttpClient<MailgunService>();
 

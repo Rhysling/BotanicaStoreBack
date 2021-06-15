@@ -38,11 +38,14 @@
     <Compile Include="Models\Generated\PocosRo\vwPlantPriceMatrix.cs" />
     <Compile Include="Models\Generated\PocosRo\vwPlantPriceSummary.cs" />
     <Compile Include="Models\Generated\PocosRo\vwPlantsAvailable.cs" />
+    <Compile Include="Models\Generated\PocosRo\vwShoppingListItem.cs" />
+    <Compile Include="Models\Generated\PocosRo\vwShoppingListSummary.cs" />
     <Compile Include="Models\Generated\PocosRo\vwWishListEmail.cs" />
     <Compile Include="Models\Generated\PocosRo\vwWishListEmailItem.cs" />
     <Compile Include="Models\Generated\PocosRo\vwWishListFlat.cs" />
     <Compile Include="Models\Generated\PocosRw\Calendar.cs" />
     <Compile Include="Models\Generated\PocosRw\Key.cs" />
+    <Compile Include="Models\Generated\PocosRw\Link.cs" />
     <Compile Include="Models\Generated\PocosRw\Plant.cs" />
     <Compile Include="Models\Generated\PocosRw\PlantPrice.cs" />
     <Compile Include="Models\Generated\PocosRw\PotSize.cs" />
@@ -56,9 +59,11 @@
     </Compile>
     <Compile Include="Repositories\Generated\Ro\vwListedPlantDb.cs" />
     <Compile Include="Repositories\Generated\Ro\PlantPricingDb.cs" />
+    <Compile Include="Repositories\Generated\Ro\vwShoppingListSummaryDb.cs" />
     <Compile Include="Repositories\Generated\Ro\vwWishListEmailDb.cs" />
     <Compile Include="Repositories\Generated\Rw\CalendarDb.cs" />
     <Compile Include="Repositories\Generated\Rw\KeyDb.cs" />
+    <Compile Include="Repositories\Generated\Rw\LinkDb.cs" />
     <Compile Include="Repositories\Generated\Rw\PlantDb.cs" />
     <Compile Include="Repositories\Generated\Rw\PlantPriceDb.cs" />
     <Compile Include="Repositories\Generated\Rw\UserDb.cs" />

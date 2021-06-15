@@ -1,14 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NPoco;
 using BotanicaStoreBack.Models;
+using Microsoft.Extensions.Options;
+using BotanicaStoreBack.Models.Core;
 
-namespace BotanicaStoreBack.Repositories
+namespace BotanicaStoreBack.Repos
 { 
-	public class LinkDb : Repositories.Core.IIdentityRepository<Link>
+	public class LinkDb : RepositoryBase
 	{
-		private NPoco.Database db = new NPoco.Database(Services.AppSettings.ConnectionString, DatabaseType.SqlServer2008) { Mapper = new Core.CustomTypeMapper() };
+		public LinkDb(IOptions<AppSettings> options)
+			: base(options)
+		{
+			//no op.
+		}
 
 		public int Save(Link entity)
 		{
@@ -25,9 +30,17 @@ namespace BotanicaStoreBack.Repositories
 			return true;
 		}
 
+		public bool UnDelete(int id)
+		{
+			string sql = $"UPDATE Links SET IsDeleted = 0 WHERE (LinkId = {id})";
+			db.Execute(sql);
+			return true;
+		}
+
 		public bool Delete(int id)
 		{
-			db.Delete<Link>(id);
+			string sql = $"UPDATE Links SET IsDeleted = 1 WHERE (LinkId = {id})";
+			db.Execute(sql);
 			return true;
 		}
 
@@ -47,14 +60,12 @@ namespace BotanicaStoreBack.Repositories
 		}
 
 
-		public Link FindBy(int id)
+		public List<Link> All(bool includeDeleted = false)
 		{
-			return db.SingleOrDefaultById<Link>(id);
-		}
+			string sql = includeDeleted ? "" : "WHERE (IsDeleted = 0) ";
+			sql += "ORDER BY SortOrder, Title";
 
-		public IEnumerable<Link> All()
-		{
-			return db.Fetch<Link>(" ");
+			return db.Fetch<Link>(sql);
 		}
 
 

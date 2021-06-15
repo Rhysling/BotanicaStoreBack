@@ -7,7 +7,9 @@ namespace BotanicaStoreBack.Runner
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine(Test.DtFormats());
+			//Console.WriteLine(Test.DtFormats());
+
+			Console.Write(DtConversion.FromShoppingListAdmin());
 
 			Console.WriteLine("Done.");
 			Console.ReadKey();

@@ -3,10 +3,7 @@ using BotanicaStoreBack.Models.Core;
 using BotanicaStoreBack.Repos;
 using BotanicaStoreBack.Services.FiltersAttributes;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BotanicaStoreBack.Controllers.api.admin
 {

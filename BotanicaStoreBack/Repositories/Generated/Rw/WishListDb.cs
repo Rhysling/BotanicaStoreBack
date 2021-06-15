@@ -50,9 +50,17 @@ namespace BotanicaStoreBack.Repos
 			return wl;
 		}
 
-		public bool MarkListEmailed(int userId)
+		public bool MarkListEmailed(int wlId)
 		{
-			string sql = $"UPDATE WishLists SET EmailedDate = '{DateTime.Now:s}' WHERE (UserId = {userId}) AND (EmailedDate IS NULL) AND (IsClosed = 0)";
+			string sql = $"UPDATE WishLists SET EmailedDate = '{DateTime.Now:s}' WHERE (WlId = {wlId})";
+			db.Execute(sql);
+			return true;
+		}
+
+		public bool UpdateClosed(int wlId, bool isClosed)
+		{
+			int val = isClosed ? 1 : 0;
+			string sql = $"UPDATE WishLists SET IsClosed = {val} WHERE (WlId = {wlId})";
 			db.Execute(sql);
 			return true;
 		}

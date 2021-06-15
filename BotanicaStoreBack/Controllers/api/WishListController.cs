@@ -92,26 +92,26 @@ namespace BotanicaStoreBack.Controllers.api
 
 			var wlm = new WishListMessage(wle, settings.TaxRate);
 
-			// ** TODO: production or connected **
-			if (false)
-			{
-				var res = await mailgunService.SendWishListMessage(wlm);
+			// *** send email -- production or connected ***
+			var res = await mailgunService.SendWishListMessage(wlm);
 
-				if (res.IsSuccessStatusCode)
-					dbWL.MarkListEmailed(uid);
+			if (res.IsSuccessStatusCode)
+				dbWL.MarkListEmailed(wle.WlId);
 
-				Response.StatusCode = (int)res.StatusCode;
-				return res.ReasonPhrase ?? "";
-			}
-			else
-			{
-				string fn = $"wl_{wle.WlId}_" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
-				string bp = Path.Combine(Directory.GetCurrentDirectory(), "TestEmails", fn);
-				System.IO.File.WriteAllText(bp + ".html", wlm.RenderHtmlBody());
-				System.IO.File.WriteAllText(bp + ".txt", wlm.RenderTextBody());
-				dbWL.MarkListEmailed(uid);
-				return await Task.FromResult("Done");
-			}
+			Response.StatusCode = (int)res.StatusCode;
+			return res.ReasonPhrase ?? "";
+			// *** END ***
+
+
+			// *** send to file ***
+			//string fn = $"wl_{wle.WlId}_" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
+			//string bp = Path.Combine(Directory.GetCurrentDirectory(), "TestEmails", fn);
+			//System.IO.File.WriteAllText(bp + ".html", wlm.RenderHtmlBody());
+			//System.IO.File.WriteAllText(bp + ".txt", wlm.RenderTextBody());
+			//dbWL.MarkListEmailed(uid);
+			//return await Task.FromResult("Done");
+			// *** END ***
+
 		}
 
 

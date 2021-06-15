@@ -90,6 +90,8 @@
     <Build Include="dbo\Views\vwPlantsAvailable.sql" />
     <Build Include="dbo\Views\vwWishListEmailItems.sql" />
     <Build Include="dbo\Views\vwWishListEmail.sql" />
+    <Build Include="dbo\Views\vwShoppingListSummary.sql" />
+    <Build Include="dbo\Views\vwShoppingListItems.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="comparisons\Schema_BPC_to_project.scmp" />
