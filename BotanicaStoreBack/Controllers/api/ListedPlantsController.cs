@@ -16,9 +16,9 @@ namespace BotanicaStoreBack.Controllers.api
 	{
 		private readonly vwListedPlantDb db;
 
-		public ListedPlantsController(IvwListedPlantDb db)
+		public ListedPlantsController(vwListedPlantDb db)
 		{
-			this.db = (vwListedPlantDb)db;
+			this.db = db;
 		}
 
 		// GET: api/<ListedPlantsController>

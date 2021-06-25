@@ -24,10 +24,10 @@ namespace BotanicaStoreBack.Controllers.api
     private readonly AppSettings opts;
     private readonly UserDb db;
 
-    public LoginController(IOptions<AppSettings> options, IUserDb db)
+    public LoginController(IOptions<AppSettings> options, UserDb db)
     {
       opts = options.Value;
-      this.db = (UserDb)db;
+      this.db = db;
     }
 
 

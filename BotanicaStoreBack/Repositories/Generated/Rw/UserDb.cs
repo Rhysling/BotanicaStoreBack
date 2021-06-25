@@ -6,7 +6,7 @@ using BotanicaStoreBack.Models.Core;
 
 namespace BotanicaStoreBack.Repos
 {
-	public class UserDb : RepositoryBase, IUserDb
+	public class UserDb : RepositoryBase
 	{
 		public UserDb(IOptions<AppSettings> options)
 			: base(options)
@@ -61,9 +61,9 @@ namespace BotanicaStoreBack.Repos
 			return db.FirstOrDefault<User>("WHERE Email = @0", email);
 		}
 
-		public IEnumerable<User> All()
+		public List<vwUserDetail> AllDetails()
 		{
-			return db.Fetch<User>(" ");
+			return db.Fetch<vwUserDetail>(" ");
 		}
 
 	}

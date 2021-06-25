@@ -21,10 +21,10 @@ namespace BotanicaStoreBack.Controllers.api.admin
 		private readonly AppSettings opts;
 		private readonly PlantDb db;
 
-		public PicturesController(IOptions<AppSettings> options, IPlantDb db)
+		public PicturesController(IOptions<AppSettings> options, PlantDb db)
 		{
 			opts = options.Value;
-			this.db = (PlantDb)db;
+			this.db = db;
 		}
 
 

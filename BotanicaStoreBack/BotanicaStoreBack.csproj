@@ -40,6 +40,7 @@
     <Compile Include="Models\Generated\PocosRo\vwPlantsAvailable.cs" />
     <Compile Include="Models\Generated\PocosRo\vwShoppingListItem.cs" />
     <Compile Include="Models\Generated\PocosRo\vwShoppingListSummary.cs" />
+    <Compile Include="Models\Generated\PocosRo\vwUserDetail.cs" />
     <Compile Include="Models\Generated\PocosRo\vwWishListEmail.cs" />
     <Compile Include="Models\Generated\PocosRo\vwWishListEmailItem.cs" />
     <Compile Include="Models\Generated\PocosRo\vwWishListFlat.cs" />
@@ -103,6 +104,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Templates\" />
   </ItemGroup>
 

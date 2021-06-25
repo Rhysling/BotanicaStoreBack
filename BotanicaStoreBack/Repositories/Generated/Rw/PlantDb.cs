@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace BotanicaStoreBack.Repos
 {
-	public class PlantDb : RepositoryBase, IPlantDb
+	public class PlantDb : RepositoryBase
 	{
 		public PlantDb(IOptions<AppSettings> options)
 			: base(options)

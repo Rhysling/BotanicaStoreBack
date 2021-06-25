@@ -14,9 +14,9 @@ namespace BotanicaStoreBack.Controllers.api.admin
 	{
 		private readonly PlantDb db;
 
-		public PlantsController(IPlantDb db)
+		public PlantsController(PlantDb db)
 		{
-			this.db = (PlantDb)db;
+			this.db = db;
 		}
 
 		// GET: api/admin/<PlantController>

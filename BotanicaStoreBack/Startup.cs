@@ -83,10 +83,10 @@ namespace BotanicaStoreBack
 			});
 
 			services.Configure<AppSettings>(Configuration);
-			services.AddTransient<IUserDb, UserDb>();
-			services.AddTransient<IPlantDb, PlantDb>();
+			services.AddTransient<UserDb>();
+			services.AddTransient<PlantDb>();
 			services.AddTransient<PlantPriceDb>();
-			services.AddTransient<IvwListedPlantDb, vwListedPlantDb>();
+			services.AddTransient<vwListedPlantDb>();
 			services.AddTransient<PlantPricingDb>();
 			services.AddTransient<WishListDb>();
 			services.AddTransient<CalendarDb>();

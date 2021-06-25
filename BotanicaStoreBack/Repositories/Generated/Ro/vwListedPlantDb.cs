@@ -7,7 +7,7 @@ using BotanicaStoreBack.Models.Core;
 
 namespace BotanicaStoreBack.Repos
 {
-	public class vwListedPlantDb : RepositoryBase, IvwListedPlantDb
+	public class vwListedPlantDb : RepositoryBase
 	{
 		public vwListedPlantDb(IOptions<AppSettings> options)
 			: base(options)
