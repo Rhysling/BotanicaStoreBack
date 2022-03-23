@@ -1,13 +1,14 @@
 ﻿
 
 
+
 CREATE VIEW [dbo].[vwListedPlants]
 AS
 SELECT       
 	p.PlantId, 
 	Genus,
 	Species, 
-	Common,
+	Family,
 	CASE
 		WHEN (trim(isnull(WebDescription, '')) <> '') THEN WebDescription
 		ELSE trim(isnull([Description], ''))
@@ -15,6 +16,7 @@ SELECT
 	PlantSize, 
 	PlantType, 
 	PlantZone,
+	PictureLocation,
 	IsNwNative,
 	HasSmallPic, 
 	BigPicIds,

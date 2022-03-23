@@ -32,7 +32,7 @@ namespace BotanicaStoreBack.Models
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string Common { get; set; }
+		public string Family { get; set; }
 
 		[NPoco.Column]
 		[StringLength(1023)]
@@ -53,6 +53,10 @@ namespace BotanicaStoreBack.Models
 		[NPoco.Column]
 		[StringLength(50)]
 		public string PlantZone { get; set; }
+
+		[NPoco.Column]
+		[StringLength(50)]
+		public string PictureLocation { get; set; }
 
 		[NPoco.Column]
 		public bool IsNwNative { get; set; }
