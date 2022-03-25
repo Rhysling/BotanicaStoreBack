@@ -98,5 +98,7 @@
     <None Include="comparisons\Schema_BPC_to_project.scmp" />
     <None Include="comparisons\Schema_project_to_MIA.scmp" />
     <None Include="comparisons\Data_BPC_to_MIA.dcmp" />
+    <None Include="comparisons\Schema_BPC_to_Azure.scmp" />
+    <None Include="comparisons\Data_BPC_to_Azure.dcmp" />
   </ItemGroup>
 </Project>
