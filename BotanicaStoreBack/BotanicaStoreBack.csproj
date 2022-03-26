@@ -110,6 +110,7 @@
   <ItemGroup>
     <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Templates\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

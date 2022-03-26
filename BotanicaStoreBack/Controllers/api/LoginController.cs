@@ -68,7 +68,7 @@ namespace BotanicaStoreBack.Controllers.api
       User user = db.FindByEmail(login.Email);
       bool isAmin = login.Email.EndsWith("polson.com");
 
-      if (isAmin && ((user is null) || (login.Pw != opts.AdminPw)))
+      if (isAmin && ((user is null) || (login.Pw != opts.BotanicaStoreAdminPw)))
         return null;
 
       DateTime nw = DateTime.Now;

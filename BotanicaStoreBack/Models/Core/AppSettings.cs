@@ -8,7 +8,7 @@ namespace BotanicaStoreBack.Models.Core
 	public class AppSettings
 	{
 		public string BotanicaStoreDb_ConnectionString { get; set; }
-		public string AdminPw { get; set; }
+		public string BotanicaStoreAdminPw { get; set; }
 		public double TaxRate { get; set; }
 		public AS_Jwt Jwt { get; set; }
 		public AS_Mailgun Mailgun { get; set; }
