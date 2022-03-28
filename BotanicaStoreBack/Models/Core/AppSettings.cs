@@ -23,7 +23,7 @@ namespace BotanicaStoreBack.Models.Core
 
 	public class AS_Mailgun
 	{
-		public string Authorization { get; set; }
+		public string AuthValue { get; set; }
 		public string BaseUrl { get; set; }
 		public string Domain { get; set; }
 		public string FromEmail { get; set; }

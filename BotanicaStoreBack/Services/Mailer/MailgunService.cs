@@ -18,7 +18,7 @@ namespace BotanicaStoreBack.Services.Mailer
 			var s = settings.Value.Mailgun;
 			domain = s.Domain;
 			client.BaseAddress = new Uri(s.BaseUrl);
-			client.DefaultRequestHeaders.Add("Authorization", s.Authorization);
+			client.DefaultRequestHeaders.Add("Authorization", s.AuthValue);
 			client.DefaultRequestHeaders.Add("Accept", "*/*");
 
 			this.client = client;
