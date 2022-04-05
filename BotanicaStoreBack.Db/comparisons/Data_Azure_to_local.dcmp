@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataComparison>
+  <Version>10</Version>
+  <ConnectionProperties1>
+    <ConnectionString>Data Source=tcp:ob6butsb7s.database.windows.net,1433;Initial Catalog=BotanicaStoreDb;Persist Security Info=True;User ID=falahcapital_db_admin@ob6butsb7s;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</ConnectionString>
+    <FullDisplayName>tcp:ob6butsb7s.database.windows.net,1433.BotanicaStoreDb (falahcapital_db_admin@ob6butsb7s)</FullDisplayName>
+  </ConnectionProperties1>
+  <ConnectionProperties2>
+    <ConnectionString>Data Source=localhost;Initial Catalog=BotanicaStoreDb;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</ConnectionString>
+    <FullDisplayName>localhost.BotanicaStoreDb (MIA\Bob)</FullDisplayName>
+  </ConnectionProperties2>
+  <SessionSettings>Default</SessionSettings>
+</DataComparison>

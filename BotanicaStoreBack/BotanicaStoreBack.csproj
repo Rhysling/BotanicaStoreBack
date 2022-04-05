@@ -7,20 +7,16 @@
 
   <ItemGroup>
     <Compile Remove="Models\**" />
-    <Compile Remove="Repositories\Generated\Ro\**" />
-    <Compile Remove="Repositories\Generated\Rw\**" />
+    <Compile Remove="Repositories\**" />
     <Compile Remove="Services\**" />
     <Content Remove="Models\**" />
-    <Content Remove="Repositories\Generated\Ro\**" />
-    <Content Remove="Repositories\Generated\Rw\**" />
+    <Content Remove="Repositories\**" />
     <Content Remove="Services\**" />
     <EmbeddedResource Remove="Models\**" />
-    <EmbeddedResource Remove="Repositories\Generated\Ro\**" />
-    <EmbeddedResource Remove="Repositories\Generated\Rw\**" />
+    <EmbeddedResource Remove="Repositories\**" />
     <EmbeddedResource Remove="Services\**" />
     <None Remove="Models\**" />
-    <None Remove="Repositories\Generated\Ro\**" />
-    <None Remove="Repositories\Generated\Rw\**" />
+    <None Remove="Repositories\**" />
     <None Remove="Services\**" />
   </ItemGroup>
 
@@ -30,70 +26,14 @@
 
   <ItemGroup>
     <Compile Include="Models\Core\AppSettings.cs" />
-    <Compile Include="Models\Core\NameValueItem.cs" />
     <Compile Include="Models\Core\PlantIdName.cs" />
-    <Compile Include="Models\Core\PlantPicId.cs" />
-    <Compile Include="Models\Core\PlantToggle.cs" />
     <Compile Include="Models\Core\UserClient.cs" />
     <Compile Include="Models\Core\UserLogin.cs" />
-    <Compile Include="Models\Generated\Enums\GeneraEnum.cs" />
-    <Compile Include="Models\Generated\Enums\PlantStatusEnum.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwListedPlant.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwPlantPriceMatrix.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwPlantPriceSummary.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwPlantsAvailable.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwShoppingListItem.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwShoppingListSummary.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwUserDetail.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwWishListEmail.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwWishListEmailItem.cs" />
-    <Compile Include="Models\Generated\PocosRo\vwWishListFlat.cs" />
-    <Compile Include="Models\Generated\PocosRw\Calendar.cs" />
-    <Compile Include="Models\Generated\PocosRw\Key.cs" />
-    <Compile Include="Models\Generated\PocosRw\Link.cs" />
-    <Compile Include="Models\Generated\PocosRw\Plant.cs" />
-    <Compile Include="Models\Generated\PocosRw\PlantPrice.cs" />
-    <Compile Include="Models\Generated\PocosRw\PotSize.cs" />
-    <Compile Include="Models\Generated\PocosRw\User.cs" />
-    <Compile Include="Models\Generated\PocosRw\WishList.cs" />
-    <Compile Include="Models\Generated\PocosRw\WishListItem.cs" />
-    <Compile Include="Models\_Generator\_NPocoT4.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>_NPocoT4.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repositories\Generated\Ro\vwListedPlantDb.cs" />
-    <Compile Include="Repositories\Generated\Ro\PlantPricingDb.cs" />
-    <Compile Include="Repositories\Generated\Ro\vwShoppingListSummaryDb.cs" />
-    <Compile Include="Repositories\Generated\Ro\vwWishListEmailDb.cs" />
-    <Compile Include="Repositories\Generated\Rw\CalendarDb.cs" />
-    <Compile Include="Repositories\Generated\Rw\KeyDb.cs" />
-    <Compile Include="Repositories\Generated\Rw\LinkDb.cs" />
-    <Compile Include="Repositories\Generated\Rw\PlantDb.cs" />
-    <Compile Include="Repositories\Generated\Rw\PlantPriceDb.cs" />
-    <Compile Include="Repositories\Generated\Rw\UserDb.cs" />
-    <Compile Include="Repositories\Generated\Rw\WishListDb.cs" />
     <Compile Include="Services\FiltersAttributes\AdminAuthorizeAttribute.cs" />
     <Compile Include="Services\FiltersAttributes\TypeScriptModelAttribute.cs" />
     <Compile Include="Services\Mailer\MailgunService.cs" />
     <Compile Include="Services\Mailer\WishListMessage.cs" />
     <Compile Include="Services\Settings.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Models\_Generator\NPoco.Core.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.Enum.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.ITypeScript.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.Ops.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.PocoRo.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.PocoRw.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.RepoIdentity.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.RepoKeyed.ttinclude" />
-    <None Include="Models\_Generator\NPoco.Gen.RepoNoKey.ttinclude" />
-    <None Include="Models\_Generator\_NPocoT4.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>_NPocoT4.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -108,9 +48,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Templates\" />
     <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BotanicaStoreBack.Repo\BotanicaStoreBack.Repo.csproj" />
   </ItemGroup>
 
 </Project>

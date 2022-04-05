@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotanicaStoreBack", "BotanicaStoreBack\BotanicaStoreBack.csproj", "{DD596FF2-BDAB-42EE-9622-1EDE6CAAD7AA}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BotanicaStoreBack.Db", "BotanicaStoreBack.Db\BotanicaStoreBack.Db.sqlproj", "{34592BD7-0385-4A5C-8F96-094E20C4CA6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotanicaStoreBack.Runner", "BotanicaStoreBack.Runner\BotanicaStoreBack.Runner.csproj", "{A8899A95-2143-4277-A019-B0D70E71B8F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotanicaStoreBack.Runner", "BotanicaStoreBack.Runner\BotanicaStoreBack.Runner.csproj", "{A8899A95-2143-4277-A019-B0D70E71B8F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotanicaStoreBack.ColorCards", "BotanicaStoreBack.ColorCards\BotanicaStoreBack.ColorCards.csproj", "{5DC76D41-1AE8-4D7B-A0F6-DCF624F8F17F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotanicaStoreBack.Repo", "BotanicaStoreBack.Repo\BotanicaStoreBack.Repo.csproj", "{26136F74-68E9-4496-8E53-C7994CBFDDDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +33,14 @@ Global
 		{A8899A95-2143-4277-A019-B0D70E71B8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8899A95-2143-4277-A019-B0D70E71B8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8899A95-2143-4277-A019-B0D70E71B8F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DC76D41-1AE8-4D7B-A0F6-DCF624F8F17F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC76D41-1AE8-4D7B-A0F6-DCF624F8F17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC76D41-1AE8-4D7B-A0F6-DCF624F8F17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC76D41-1AE8-4D7B-A0F6-DCF624F8F17F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26136F74-68E9-4496-8E53-C7994CBFDDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26136F74-68E9-4496-8E53-C7994CBFDDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26136F74-68E9-4496-8E53-C7994CBFDDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26136F74-68E9-4496-8E53-C7994CBFDDDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

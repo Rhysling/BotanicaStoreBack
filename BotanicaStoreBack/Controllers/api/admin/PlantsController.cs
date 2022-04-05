@@ -1,6 +1,5 @@
-﻿using BotanicaStoreBack.Models;
-using BotanicaStoreBack.Models.Core;
-using BotanicaStoreBack.Repos;
+﻿using BotanicaStoreBack.Repo.Models;
+using BotanicaStoreBack.Repo.Repos;
 using BotanicaStoreBack.Services.FiltersAttributes;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

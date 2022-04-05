@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BotanicaStoreBack.Repo\BotanicaStoreBack.Repo.csproj" />
     <ProjectReference Include="..\BotanicaStoreBack\BotanicaStoreBack.csproj" />
   </ItemGroup>
 

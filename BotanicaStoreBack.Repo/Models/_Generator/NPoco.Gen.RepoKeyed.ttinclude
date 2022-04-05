@@ -1,0 +1,73 @@
+﻿<#+
+//
+void MakeRepoKeyed(Table tbl)
+{
+	bool isIKeyed = tbl.PK[0].PropertyName == "Id";
+	string forceAsObject = (tbl.PK[0].PropertyType == "string") ? "(object)" : "";
+#>using <#=ApplicationName #>.Repo.Models;
+
+namespace <#=RepositoryNamespace #>
+{ 
+	public class <#= tbl.RepoName #> : RepositoryBase
+	{
+		public <#= tbl.RepoName #>(ConnStr connStr)
+			: base(connStr.Value)
+		{
+			//no op.
+		}
+
+		public bool Insert(<#= tbl.ClassName #> entity)
+		{
+			db.Insert(entity);
+			return true;
+		}
+
+		public bool Update(<#= tbl.ClassName #> entity)
+		{
+			db.Update(entity);
+			return true;
+		}
+
+		public bool Delete(<#= tbl.PK[0].PropertyType #> id)
+		{
+			db.Delete<<#= tbl.ClassName #>>(<#= forceAsObject #>id);
+			return true;
+		}
+
+		public bool Delete(IEnumerable<<#= tbl.PK[0].PropertyType #>> ids)
+		{
+			foreach (<#= tbl.PK[0].PropertyType #> id in ids)
+			{
+				db.Delete<<#= tbl.ClassName #>>(id);
+			}
+			return true;
+		}
+
+		public bool Destroy(<#= tbl.PK[0].PropertyType #> id)
+		{
+			db.Delete<<#= tbl.ClassName #>>(<#= forceAsObject #>id);
+			return true;
+		}
+
+
+		public <#= tbl.ClassName #> FindBy(<#= tbl.PK[0].PropertyType #> id)
+		{
+			return db.SingleOrDefaultById<<#= tbl.ClassName #>>(<#= forceAsObject #>id);
+		}
+
+		public IEnumerable<<#= tbl.ClassName #>> All()
+		{
+			return db.Fetch<<#= tbl.ClassName #>>(" ");
+		}
+
+		public <#= tbl.PK[0].PropertyType #> MaxId()
+		{
+			return db.Single<<#= tbl.PK[0].PropertyType #>>("SELECT MAX(Id) FROM [<#= tbl.Name #>]");
+		}
+	}
+}	
+	
+<#+
+	SaveOutput(GetEntityFullPath(tbl, EntityType.RepoRw));
+} // End Function
+#>

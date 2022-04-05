@@ -95,10 +95,10 @@
     <Build Include="dbo\Views\vwUserDetails.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="comparisons\Schema_BPC_to_project.scmp" />
-    <None Include="comparisons\Schema_project_to_MIA.scmp" />
-    <None Include="comparisons\Data_BPC_to_MIA.dcmp" />
-    <None Include="comparisons\Schema_BPC_to_Azure.scmp" />
-    <None Include="comparisons\Data_BPC_to_Azure.dcmp" />
+    <None Include="comparisons\Data_local_to_Azure.dcmp" />
+    <None Include="comparisons\Schema_project_to_local.scmp" />
+    <None Include="comparisons\Schema_local_to_Azure.scmp" />
+    <None Include="comparisons\Schema_local_to_project.scmp" />
+    <None Include="comparisons\Data_Azure_to_local.dcmp" />
   </ItemGroup>
 </Project>

@@ -1,12 +1,8 @@
-﻿using BotanicaStoreBack.Models;
-using BotanicaStoreBack.Repos;
+﻿using BotanicaStoreBack.Repo.Models;
+using BotanicaStoreBack.Repo.Repos;
 using BotanicaStoreBack.Services.FiltersAttributes;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BotanicaStoreBack.Controllers.api.admin
 {

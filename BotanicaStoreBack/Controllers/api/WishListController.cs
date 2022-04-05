@@ -1,13 +1,11 @@
-﻿using BotanicaStoreBack.Models;
-using BotanicaStoreBack.Models.Core;
-using BotanicaStoreBack.Repos;
+﻿using BotanicaStoreBack.Models.Core;
+using BotanicaStoreBack.Repo.Models;
+using BotanicaStoreBack.Repo.Repos;
 using BotanicaStoreBack.Services.Mailer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;

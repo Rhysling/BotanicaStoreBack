@@ -1,5 +1,6 @@
 using BotanicaStoreBack.Models.Core;
-using BotanicaStoreBack.Repos;
+using BotanicaStoreBack.Repo.Models;
+using BotanicaStoreBack.Repo.Repos;
 using BotanicaStoreBack.Services;
 using BotanicaStoreBack.Services.Mailer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,7 +22,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<AppSettings>(builder.Configuration);
 
 var aps = builder.Configuration.Get<AppSettings>();
+var connStr = new ConnStr { Value = aps.BotanicaStoreDb_ConnectionString };
+
 builder.Services.AddSingleton<AppSettings>(aps);
+builder.Services.AddSingleton<ConnStr>(connStr);
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

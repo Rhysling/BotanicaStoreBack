@@ -1,13 +1,12 @@
 ﻿using BotanicaStoreBack.Models.Core;
-using BotanicaStoreBack.Repos;
+using BotanicaStoreBack.Repo.Models;
+using BotanicaStoreBack.Repo.Repos;
 using BotanicaStoreBack.Services.FiltersAttributes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
