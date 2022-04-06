@@ -10,4 +10,8 @@
     <PackageReference Include="sautinsoft.document" Version="5.5.3.23" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BotanicaStoreBack.Repo\BotanicaStoreBack.Repo.csproj" />
+  </ItemGroup>
+
 </Project>

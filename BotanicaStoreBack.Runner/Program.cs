@@ -8,11 +8,12 @@ namespace BotanicaStoreBack.Runner
 		static void Main(string[] args)
 		{
 			//Console.WriteLine(Test.DtFormats());
+			//Console.Write(DtConversion.FromShoppingListAdmin());
 
-			Console.Write(DtConversion.FromShoppingListAdmin());
+			ColorCardMaker.Create();
 
-			Console.WriteLine("Done.");
-			Console.ReadKey();
+			//Console.WriteLine("Done.");
+			//Console.ReadKey();
 		}
 	}
 }
