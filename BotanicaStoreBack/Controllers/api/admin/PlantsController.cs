@@ -18,19 +18,29 @@ namespace BotanicaStoreBack.Controllers.api.admin
 			this.db = db;
 		}
 
-		// GET: api/admin/<PlantController>
-		[HttpGet]
-		public List<Plant> Get()
-		{
-			return db.All();
-		}
-
 		// GET api/<PlantsController>/5
 		[HttpGet("{id}")]
 		public string Get(int id)
 		{
 			return "value";
 		}
+
+
+		// GET api/admin/Plants/FlagSummaries
+		[HttpGet("[action]")]
+		public List<vwFlagSummary> FlagSummaries()
+		{
+			return db.FlagSummaries();
+		}
+
+		// POST api/admin/Plants/RemoveFlag?flag=xx
+		[HttpPost("[action]")]
+		public bool RemoveFlag([FromQuery] string flag)
+		{
+			db.RemoveFlag(flag);
+			return true;
+		}
+
 
 		// Save / Update ******
 

@@ -15,6 +15,7 @@
     <Compile Remove="Models\Generated\PocosRw\Subscriber.cs" />
     <Compile Remove="Models\Generated\PocosRw\tpPlantPricesOld.cs" />
     <Compile Remove="Repositories\Generated\Ro\PlantViewDb.cs" />
+    <Compile Remove="Repositories\Generated\Ro\vwFlagSummaryDb.cs" />
     <Compile Remove="Repositories\Generated\Ro\vwPlantPriceMatrixDb.cs" />
     <Compile Remove="Repositories\Generated\Ro\vwPlantPriceSummaryDb.cs" />
     <Compile Remove="Repositories\Generated\Ro\vwPlantsAvailableDb.cs" />

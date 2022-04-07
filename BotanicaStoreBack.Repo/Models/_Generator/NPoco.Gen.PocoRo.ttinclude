@@ -2,10 +2,7 @@
 //
 	void MakePocoRo(Table tbl, bool makeTsInterface)
 	{
-#>
-using System;
-using NPoco;
-using <#=ApplicationName #>.Services.FiltersAttributes;
+#>using NPoco;
 
 namespace <#=Namespace #>
 {

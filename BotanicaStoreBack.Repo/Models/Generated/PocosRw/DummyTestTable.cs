@@ -25,17 +25,17 @@ namespace BotanicaStoreBack.Repo.Models
 
 		[NPoco.Column]
 		[StringLength(10)]
-		public string Info { get; set; }
+		public string? Info { get; set; }
 
 		[NPoco.Column]
 		[StringLength(10)]
-		public string MoreStuff { get; set; }
+		public string? MoreStuff { get; set; }
 
 		[NPoco.Column]
 		public byte[] ByteThing { get; set; }
 
 		[NPoco.Column]
-		public byte[] BigByteThing { get; set; }
+		public byte[]? BigByteThing { get; set; }
 
 	}
 }

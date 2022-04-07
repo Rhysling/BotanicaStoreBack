@@ -24,31 +24,31 @@ namespace BotanicaStoreBack.Repo.Models
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string Family { get; set; }
+		public string? Family { get; set; }
 
 		[NPoco.Column]
 		[StringLength(1023)]
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		[NPoco.Column]
 		[StringLength(1023)]
-		public string WebDescription { get; set; }
+		public string? WebDescription { get; set; }
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string PlantSize { get; set; }
+		public string? PlantSize { get; set; }
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string PlantType { get; set; }
+		public string? PlantType { get; set; }
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string PlantZone { get; set; }
+		public string? PlantZone { get; set; }
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string PictureLocation { get; set; }
+		public string? PictureLocation { get; set; }
 
 		[NPoco.Column]
 		public bool IsNwNative { get; set; }
@@ -71,7 +71,7 @@ namespace BotanicaStoreBack.Repo.Models
 
 		[NPoco.Column]
 		[StringLength(2)]
-		public string Flag { get; set; }
+		public string? Flag { get; set; }
 
 		// Computed Columns
 

@@ -6,15 +6,13 @@ namespace BotanicaStoreBack.ColorCards
 	public class DocBuilder
 	{
 		private List<Plant> plants;
-		private string docPath;
 
-		public DocBuilder(List<Plant> plants, string docPath)
+		public DocBuilder(List<Plant> plants)
 		{
 			this.plants = plants;
-			this.docPath = docPath;
 		}
 
-		public void Create()
+		public byte[] Create()
 		{
 			// Create a new document and DocumentBuilder.
 			DocumentCore dc = new DocumentCore();
@@ -49,12 +47,9 @@ namespace BotanicaStoreBack.ColorCards
 				cb2.AddToDoc(dc);
 			}
 
-
-			// Save the document to the file in DOCX format.
-			dc.Save(docPath, new DocxSaveOptions { EmbeddedJpegQuality = 90 });
-
-			// Open the result for demonstration purposes.
-			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(docPath) { UseShellExecute = true });
+			using var ms = new MemoryStream();
+			dc.Save(ms, new DocxSaveOptions());
+			return ms.ToArray();
 		}
 
 

@@ -15,17 +15,17 @@ namespace BotanicaStoreBack.Repo.Repos
 			return db.SingleOrDefaultById<Plant>(id);
 		}
 
-		public List<Plant> All()
+		public List<Plant> ByFlag(string flag)
 		{
-			return db.Fetch<Plant>("ORDER BY Genus, Species");
+			return db.Fetch<Plant>("WHERE (Flag = @0) ORDER BY Genus, Species", flag);
 		}
 
 		public string GetNextBigPicId(int PlantId)
 		{
 			string sql = "SELECT BigPicIds FROM Plants WHERE (PlantId = @0)";
-			string ids = db.Fetch<string>(sql, PlantId).FirstOrDefault();
+			string? ids = db.Fetch<string>(sql, PlantId).FirstOrDefault();
 
-			if (ids is null || ids == "")
+			if (String.IsNullOrWhiteSpace(ids))
 				return "1";
 
 			return (ids.Split(',').Select(a => Int32.Parse(a)).Max() + 1).ToString();
@@ -34,9 +34,10 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public int Save(Plant plant)
 		{
+			plant.Flag = String.IsNullOrWhiteSpace(plant.Flag) ? null : plant.Flag.Trim();
 			plant.LastUpdate = DateTime.Now;
 
-			db.Save<Plant>(plant);
+			db.Save(plant);
 			return plant.PlantId;
 		}
 
@@ -67,7 +68,7 @@ namespace BotanicaStoreBack.Repo.Repos
 			}
 
 			sql = "SELECT BigPicIds FROM Plants WHERE (PlantId = @0)";
-			string ids = db.Fetch<string>(sql, ppid.PlantId).FirstOrDefault();
+			string? ids = db.Fetch<string>(sql, ppid.PlantId).FirstOrDefault();
 
 			if (String.IsNullOrWhiteSpace(ids))
 				ids = ppid.PicId;
@@ -96,6 +97,18 @@ namespace BotanicaStoreBack.Repo.Repos
 
 			sql = $"UPDATE Plants SET BigPicIds = '{ids}' WHERE PlantId = {ppid.PlantId}";
 			db.Execute(sql);
+		}
+
+
+		public List<vwFlagSummary> FlagSummaries()
+		{
+			return db.Fetch<vwFlagSummary>("ORDER BY LastUpdate DESC");
+		}
+
+		public void RemoveFlag(string flag)
+		{
+			string sql = $"UPDATE Plants SET Flag = null WHERE (Flag = @0)";
+			db.Execute(sql, flag);
 		}
 
 

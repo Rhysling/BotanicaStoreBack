@@ -16,10 +16,14 @@ public static class ColorCardMaker
 
 		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
 
-		var plants = db.Fetch<Plant>("WHERE Flag = '3' ORDER BY Genus, Species");
+		var plants = db.Fetch<Plant>("WHERE Flag = '5' ORDER BY Genus, Species");
 
-		var docBuilder = new DocBuilder(plants, docPath);
-		docBuilder.Create();
+		var docBuilder = new DocBuilder(plants);
+		var bytes = docBuilder.Create();
 
+		System.IO.File.WriteAllBytes(docPath, bytes);
+
+		// Open the result for demonstration purposes.
+		System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(docPath) { UseShellExecute = true });
 	}
 }

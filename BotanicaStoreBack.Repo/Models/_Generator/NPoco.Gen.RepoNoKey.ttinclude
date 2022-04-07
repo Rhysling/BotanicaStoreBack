@@ -2,19 +2,14 @@
 //
 void MakeRepoNoKey(Table tbl)
 {
-#>
-using System;
-using System.Collections.Generic;
-using Microsoft.Extensions.Options;
-using <#=ApplicationName #>.Models;
-using <#=ApplicationName #>.Models.Core;
+#>using <#=ApplicationName #>.Repo.Models;
 
 namespace <#=RepositoryNamespace #>
 { 
 	public class <#= tbl.RepoName #> : RepositoryBase
 	{
-		public <#= tbl.RepoName #>(IOptions<AppSettings> options)
-			: base(options)
+		public <#= tbl.RepoName #>(ConnStr connStr)
+			: base(connStr.Value)
 		{
 			//no op.
 		}

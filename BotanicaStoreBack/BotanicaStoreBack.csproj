@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BotanicaStoreBack.ColorCards\BotanicaStoreBack.ColorCards.csproj" />
     <ProjectReference Include="..\BotanicaStoreBack.Repo\BotanicaStoreBack.Repo.csproj" />
   </ItemGroup>
 
