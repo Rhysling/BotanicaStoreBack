@@ -17,7 +17,7 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public List<Plant> All()
 		{
-			return db.Fetch<Plant>(" ");
+			return db.Fetch<Plant>("ORDER BY Genus, Species");
 		}
 
 		public List<Plant> ByFlag(string flag)
