@@ -18,6 +18,13 @@ namespace BotanicaStoreBack.Controllers.api.admin
 			this.db = db;
 		}
 
+		// GET: api/admin/Plants
+		[HttpGet]
+		public List<Plant> Get()
+		{
+			return db.All();
+		}
+
 		// GET api/<PlantsController>/5
 		[HttpGet("{id}")]
 		public string Get(int id)

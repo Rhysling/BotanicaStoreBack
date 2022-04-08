@@ -30,15 +30,16 @@ namespace BotanicaStoreBack.Controllers.api
 		// POST api/<LoginController>
 		[AllowAnonymous]
 		[HttpPost]
-		public IActionResult Post([FromBody] UserLogin login)
+		public ActionResult Post([FromBody] UserLogin login)
 		{
-			IActionResult response = Unauthorized();
+			ActionResult response = Unauthorized();
 			var user = AuthenticateUser(login);
 
 			if (user != null)
 			{
 				var tokenString = GenerateJSONWebToken(user);
-				response = Ok(new UserClient {
+				response = Ok(new UserClient
+				{
 					UserId = user.UserId,
 					Email = user.Email,
 					FullName = user.FullName ?? "",

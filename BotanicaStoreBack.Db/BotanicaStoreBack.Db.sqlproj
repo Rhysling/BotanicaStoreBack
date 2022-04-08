@@ -93,6 +93,7 @@
     <Build Include="dbo\Views\vwShoppingListSummary.sql" />
     <Build Include="dbo\Views\vwShoppingListItems.sql" />
     <Build Include="dbo\Views\vwUserDetails.sql" />
+    <Build Include="dbo\Views\vwFlagSummary.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="comparisons\Data_local_to_Azure.dcmp" />
