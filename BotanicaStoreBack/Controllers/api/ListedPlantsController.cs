@@ -23,10 +23,22 @@ namespace BotanicaStoreBack.Controllers.api
 			return db.All();
 		}
 
-		[Route("[action]")]
+		// GET api/ListedPlants/GetFeaturedPlant
+		[HttpGet("[action]")]
 		public vwListedPlant GetFeaturedPlant()
 		{
 			return db.FeaturedPlant();
+		}
+
+		// GET api/ListedPlants/FindBySlug?slug=abc
+		[HttpGet("[action]")]
+		public IActionResult FindBySlug([FromQuery] string slug)
+		{
+			var p = db.FindBySlug(slug);
+			if (p == null)
+				return NotFound();
+
+			return Ok(p);
 		}
 	}
 }

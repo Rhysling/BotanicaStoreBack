@@ -10,10 +10,11 @@ namespace BotanicaStoreBack.Runner
 			//Console.WriteLine(Test.DtFormats());
 			//Console.Write(DtConversion.FromShoppingListAdmin());
 
-			ColorCardMaker.Create();
+			//ColorCardMaker.Create();
+			//SlugMaker.Create();
 
-			//Console.WriteLine("Done.");
-			//Console.ReadKey();
+			Console.WriteLine("Done.");
+			Console.ReadKey();
 		}
 	}
 }

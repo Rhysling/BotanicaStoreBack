@@ -10,11 +10,6 @@ namespace BotanicaStoreBack.Repo.Repos
 			//no op.
 		}
 
-		public Plant FindBy(int id)
-		{
-			return db.SingleOrDefaultById<Plant>(id);
-		}
-
 		public List<Plant> All()
 		{
 			return db.Fetch<Plant>("ORDER BY Genus, Species");
@@ -37,13 +32,13 @@ namespace BotanicaStoreBack.Repo.Repos
 		}
 
 
-		public int Save(Plant plant)
+		public Plant Save(Plant plant)
 		{
 			plant.Flag = String.IsNullOrWhiteSpace(plant.Flag) ? null : plant.Flag.Trim();
 			plant.LastUpdate = DateTime.Now;
 
 			db.Save(plant);
-			return plant.PlantId;
+			return plant;
 		}
 
 		// *** Updates **

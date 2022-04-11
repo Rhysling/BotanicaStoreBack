@@ -2,6 +2,8 @@
 using BotanicaStoreBack.Repo.Repos;
 using BotanicaStoreBack.Services.FiltersAttributes;
 using Microsoft.AspNetCore.Mvc;
+using Slugify;
+using System;
 using System.Collections.Generic;
 
 namespace BotanicaStoreBack.Controllers.api.admin
@@ -32,7 +34,6 @@ namespace BotanicaStoreBack.Controllers.api.admin
 			return "value";
 		}
 
-
 		// GET api/admin/Plants/FlagSummaries
 		[HttpGet("[action]")]
 		public List<vwFlagSummary> FlagSummaries()
@@ -51,18 +52,23 @@ namespace BotanicaStoreBack.Controllers.api.admin
 
 		// Save / Update ******
 
-		// POST api/admin/<PlantController>
+		// POST api/admin/PlantController
 		[HttpPost]
-		public int Post([FromBody] Plant plant)
+		public IActionResult Post([FromBody] Plant plant)
 		{
-			var m = ModelState.IsValid;
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
 
-			if (m)
+			plant = db.Save(plant);
+
+			if (String.IsNullOrWhiteSpace(plant.Slug))
 			{
-				return db.Save(plant);
+				var helper = new SlugHelper();
+				plant.Slug = helper.GenerateSlug($"{plant.Genus} {plant.Species} {plant.PlantId}");
+				plant = db.Save(plant);
 			}
-
-			return -1;
+			
+			return Ok(plant);
 		}
 
 		// POST api/admin/<PlantController>/[action]

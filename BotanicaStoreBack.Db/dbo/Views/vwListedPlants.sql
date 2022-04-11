@@ -2,6 +2,7 @@
 
 
 
+
 CREATE VIEW [dbo].[vwListedPlants]
 AS
 SELECT       
@@ -21,6 +22,7 @@ SELECT
 	HasSmallPic, 
 	BigPicIds,
 	IsFeatured,
+	p.Slug,
 	isnull(a.[Availability], '') AS [Availability]
 
 FROM

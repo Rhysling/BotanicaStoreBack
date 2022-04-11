@@ -47,6 +47,9 @@ namespace BotanicaStoreBack.Repo.Models
 		public bool IsFeatured { get; set; }
 
 		[NPoco.Column]
+		public string Slug { get; set; }
+
+		[NPoco.Column]
 		public string Availability { get; set; }
 	}
 }

@@ -15,12 +15,12 @@ namespace BotanicaStoreBack.Repo.Models
 		[NPoco.Column]
 		[StringLength(50)]
 		[Required()]
-		public string Genus { get; set; }
+		public string Genus { get; set; } = "";
 
 		[NPoco.Column]
 		[StringLength(50)]
 		[Required()]
-		public string Species { get; set; }
+		public string Species { get; set; } = "";
 
 		[NPoco.Column]
 		[StringLength(50)]
@@ -47,7 +47,7 @@ namespace BotanicaStoreBack.Repo.Models
 		public string? PlantZone { get; set; }
 
 		[NPoco.Column]
-		[StringLength(50)]
+		[StringLength(150)]
 		public string? PictureLocation { get; set; }
 
 		[NPoco.Column]
@@ -58,13 +58,17 @@ namespace BotanicaStoreBack.Repo.Models
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string BigPicIds { get; set; }
+		public string BigPicIds { get; set; } = "";
 
 		[NPoco.Column]
 		public bool IsListed { get; set; }
 
 		[NPoco.Column]
 		public bool IsFeatured { get; set; }
+
+		[NPoco.Column]
+		[StringLength(100)]
+		public string Slug { get; set; } = "";
 
 		[NPoco.Column]
 		public DateTime LastUpdate { get; set; }

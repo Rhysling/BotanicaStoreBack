@@ -20,6 +20,11 @@ namespace BotanicaStoreBack.Repo.Repos
 			return db.Fetch<vwListedPlant>("ORDER BY Genus, Species");
 		}
 
+		public Plant FindBySlug(string slug)
+		{
+			return db.FirstOrDefault<Plant>("WHERE (Slug = @0)", slug);
+		}
+
 		//Example - filtered list:
 		public List<vwListedPlant> FilteredList(string str1, string str2)
 		{
