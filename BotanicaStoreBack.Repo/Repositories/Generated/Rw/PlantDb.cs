@@ -35,7 +35,7 @@ namespace BotanicaStoreBack.Repo.Repos
 		public Plant Save(Plant plant)
 		{
 			plant.Flag = String.IsNullOrWhiteSpace(plant.Flag) ? null : plant.Flag.Trim();
-			plant.LastUpdate = DateTime.Now;
+			plant.LastUpdate = DateTime.UtcNow;
 
 			db.Save(plant);
 			return plant;
@@ -116,7 +116,7 @@ namespace BotanicaStoreBack.Repo.Repos
 		{
 			foreach (Plant item in items)
 			{
-				db.Save<Plant>(item);
+				db.Save(item);
 			}
 			return true;
 		}

@@ -1,3 +1,4 @@
+using BotanicaStoreBack.Repo.Models.Core;
 using NPoco;
 
 namespace BotanicaStoreBack.Repo.Models
@@ -18,7 +19,7 @@ namespace BotanicaStoreBack.Repo.Models
 
 
 		// Computed
-		public string LastUpdateFormatted => LastUpdate?.ToString("s")[..^3].Replace('T', ' ') ?? "";
+		public string LastUpdateFormatted => Utils.ToShortPT(LastUpdate);
 
 	}
 }
