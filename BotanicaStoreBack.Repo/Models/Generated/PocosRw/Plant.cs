@@ -55,11 +55,8 @@ public partial class Plant : BotanicaStoreBackDB.Record<Plant>
 	public bool IsNwNative { get; set; }
 
 	[NPoco.Column]
-	public bool HasSmallPic { get; set; }
-
-	[NPoco.Column]
-	[StringLength(50)]
-	public string BigPicIds { get; set; } = "";
+	[StringLength(4095)]
+	public string Pics { get; set; } = "[]";
 
 	[NPoco.Column]
 	public bool IsListed { get; set; }

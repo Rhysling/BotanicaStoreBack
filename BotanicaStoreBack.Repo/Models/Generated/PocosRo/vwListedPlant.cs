@@ -10,46 +10,43 @@ namespace BotanicaStoreBack.Repo.Models
 		[NPoco.Column] 
 		public int PlantId { get; set; }
 
-		[NPoco.Column] 
-		public string Genus { get; set; }
+		[NPoco.Column]
+		public string Genus { get; set; } = "";
 
 		[NPoco.Column] 
-		public string Species { get; set; }
+		public string Species { get; set; } = "";
 
 		[NPoco.Column] 
-		public string Family { get; set; }
+		public string? Family { get; set; }
 
 		[NPoco.Column] 
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		[NPoco.Column] 
-		public string PlantSize { get; set; }
+		public string? PlantSize { get; set; }
 
 		[NPoco.Column] 
-		public string PlantType { get; set; }
+		public string? PlantType { get; set; }
 
 		[NPoco.Column] 
-		public string PlantZone { get; set; }
+		public string? PlantZone { get; set; }
 
 		[NPoco.Column]
-		public string PictureLocation { get; set; }
+		public string? PictureLocation { get; set; }
 
 		[NPoco.Column]
 		public bool IsNwNative { get; set; }
 
-		[NPoco.Column] 
-		public bool HasSmallPic { get; set; }
-
-		[NPoco.Column] 
-		public string BigPicIds { get; set; }
+		[NPoco.Column]
+		public string Pics { get; set; } = "[]";
 
 		[NPoco.Column]
 		public bool IsFeatured { get; set; }
 
 		[NPoco.Column]
-		public string Slug { get; set; }
+		public string Slug { get; set; } = "";
 
 		[NPoco.Column]
-		public string Availability { get; set; }
+		public string Availability { get; set; } = "";
 	}
 }

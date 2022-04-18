@@ -1,4 +1,6 @@
 using BotanicaStoreBack.Repo.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace BotanicaStoreBack.Repo.Repos
 {
@@ -7,7 +9,11 @@ namespace BotanicaStoreBack.Repo.Repos
 		public PlantDb(ConnStr connStr)
 			: base(connStr.Value)
 		{
-			//no op.
+			JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+			{
+				Formatting = Formatting.None,
+				ContractResolver = new CamelCasePropertyNamesContractResolver()
+			};
 		}
 
 		public List<Plant> All()
@@ -20,15 +26,20 @@ namespace BotanicaStoreBack.Repo.Repos
 			return db.Fetch<Plant>("WHERE (Flag = @0) ORDER BY Genus, Species", flag);
 		}
 
-		public string GetNextBigPicId(int PlantId)
+		public int GetNextBigPicId(int PlantId)
 		{
-			string sql = "SELECT BigPicIds FROM Plants WHERE (PlantId = @0)";
+			string sql = "SELECT Pics FROM Plants WHERE (PlantId = @0)";
 			string? ids = db.Fetch<string>(sql, PlantId).FirstOrDefault();
 
 			if (String.IsNullOrWhiteSpace(ids))
-				return "1";
+				return 1;
 
-			return (ids.Split(',').Select(a => Int32.Parse(a)).Max() + 1).ToString();
+			var pics = JsonConvert.DeserializeObject<List<PlantPicId>>(ids);
+
+			if (pics is null || pics.Count == 0)
+				return 1;
+
+			return pics.Select(a => a.PicId).Max() + 1;
 		}
 
 
@@ -58,44 +69,42 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public void UpdatePictures(PlantPicId ppid)
 		{
+			List<PlantPicId> ppidList;
 			string sql;
 
-			if (ppid.PicId == "sm")
-			{
-				sql = $"UPDATE Plants SET HasSmallPic = 1 WHERE PlantId = {ppid.PlantId}";
-				db.Execute(sql);
-				return;
-			}
+			sql = "SELECT Pics FROM Plants WHERE (PlantId = @0)";
+			string? json = db.Fetch<string>(sql, ppid.PlantId).FirstOrDefault();
 
-			sql = "SELECT BigPicIds FROM Plants WHERE (PlantId = @0)";
-			string? ids = db.Fetch<string>(sql, ppid.PlantId).FirstOrDefault();
-
-			if (String.IsNullOrWhiteSpace(ids))
-				ids = ppid.PicId;
+			if (String.IsNullOrWhiteSpace(json))
+				ppidList = new();
 			else
-				ids += "," + ppid.PicId;
+				ppidList = JsonConvert.DeserializeObject<List<PlantPicId>>(json) ?? new();
 
-			sql = $"UPDATE Plants SET BigPicIds = '{ids}' WHERE PlantId = {ppid.PlantId}";
+			var ppidListNew = ppidList.Where(a => a.PicId != ppid.PicId).ToList();
+			ppidListNew.Add(ppid);
+			var ppidListOut = ppidListNew.Select(a => new { a.PicId, a.Key, a.Pvt }).OrderBy(a => a.PicId).ToList();
+
+			sql = $"UPDATE Plants SET Pics = '{JsonConvert.SerializeObject(ppidListOut)}' WHERE PlantId = {ppid.PlantId}";
 			db.Execute(sql);
 		}
 
 		public void DeletePictures(PlantPicId ppid)
 		{
+			List<PlantPicId> ppidList;
 			string sql;
 
-			if (ppid.PicId == "sm")
-			{
-				sql = $"UPDATE Plants SET HasSmallPic = 0 WHERE PlantId = {ppid.PlantId}";
-				db.Execute(sql);
-				return;
-			}
+			sql = "SELECT Pics FROM Plants WHERE (PlantId = @0)";
+			string? json = db.Fetch<string>(sql, ppid.PlantId).FirstOrDefault();
 
-			sql = "SELECT BigPicIds FROM Plants WHERE (PlantId = @0)";
-			string ids = db.Fetch<string>(sql, ppid.PlantId).FirstOrDefault() ?? "";
+			if (String.IsNullOrWhiteSpace(json))
+				ppidList = new();
+			else
+				ppidList = JsonConvert.DeserializeObject<List<PlantPicId>>(json) ?? new();
 
-			ids = String.Join(',', ids.Split(',').Where(a => a != ppid.PicId));
+			var ppidListNew = ppidList.Where(a => a.PicId != ppid.PicId).ToList();
+			var ppidListOut = ppidListNew.Select(a => new { a.PicId, a.Key, a.Pvt }).OrderBy(a => a.PicId).ToList();
 
-			sql = $"UPDATE Plants SET BigPicIds = '{ids}' WHERE PlantId = {ppid.PlantId}";
+			sql = $"UPDATE Plants SET Pics = '{JsonConvert.SerializeObject(ppidListOut)}' WHERE PlantId = {ppid.PlantId}";
 			db.Execute(sql);
 		}
 

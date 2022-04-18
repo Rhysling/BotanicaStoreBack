@@ -39,6 +39,7 @@ namespace BotanicaStoreBack.Controllers.api.admin
 
 				if (file.Length > 0)
 				{
+					string keyNow = DateTime.Now.ToString("yyMMdd-HHmmss");
 					string dir = Directory.GetCurrentDirectory();
 
 					if (opts.IsDev)
@@ -52,19 +53,17 @@ namespace BotanicaStoreBack.Controllers.api.admin
 					//D:\IIS_Sites\BotanicaStore
 					//D:\IIS_Sites\BotanicaStore\wwwroot\plantpics
 
-					string picId;
-					if (isSmall)
-						picId = "sm";
-					else
+					int picId = 0;
+					if (!isSmall)
 						picId = db.GetNextBigPicId(plantId);
 
-					string fileName = $"p{plantId.ToString("0000")}_{picId.PadLeft(2, '0')}.jpg";
+					string fileName = $"p{plantId.ToString("0000")}_{picId.ToString("00")}_{keyNow}.jpg";
 					string fullPath = Path.Combine(dir, fileName);
 
 					using (var stream = new FileStream(fullPath, FileMode.Create))
 						file.CopyTo(stream);
 
-					var ppid = new PlantPicId { PlantId = plantId, PicId = picId };
+					var ppid = new PlantPicId { PlantId = plantId, PicId = picId, Key = keyNow };
 
 					db.UpdatePictures(ppid);
 
@@ -82,19 +81,19 @@ namespace BotanicaStoreBack.Controllers.api.admin
 
 		}
 
-		// POST api/admin/Pictures/SavePicture
+		// POST api/admin/Pictures/DeletePicture
 		[HttpPost("[action]")]
 		public ActionResult DeletePicture([FromBody] PlantPicId ppid)
 		{
-			string dir = Directory.GetCurrentDirectory();
+			//string dir = Directory.GetCurrentDirectory();
 
-			if (opts.IsDev)
-				dir = dir.Replace(@"BotanicaStoreBack\BotanicaStoreBack", @"BotanicaStoreFront\public\plantpics");
+			//if (opts.IsDev)
+			//	dir = dir.Replace(@"BotanicaStoreBack\BotanicaStoreBack", @"BotanicaStoreFront\public\plantpics");
 
-			string fileName = $"p{ppid.PlantId.ToString("0000")}_{ppid.PicId.PadLeft(2, '0')}.jpg";
-			string fullPath = Path.Combine(dir, fileName);
+			//string fileName = $"p{ppid.PlantId.ToString("0000")}_{ppid.PicId.ToString("00")}.jpg";
+			//string fullPath = Path.Combine(dir, fileName);
 
-			System.IO.File.Delete(fullPath);
+			//System.IO.File.Delete(fullPath);
 
 			db.DeletePictures(ppid);
 

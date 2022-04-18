@@ -3,6 +3,7 @@
 
 
 
+
 CREATE VIEW [dbo].[vwListedPlants]
 AS
 SELECT       
@@ -19,8 +20,7 @@ SELECT
 	PlantZone,
 	PictureLocation,
 	IsNwNative,
-	HasSmallPic, 
-	BigPicIds,
+	Pics,
 	IsFeatured,
 	p.Slug,
 	isnull(a.[Availability], '') AS [Availability]

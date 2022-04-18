@@ -12,6 +12,7 @@ namespace BotanicaStoreBack.Runner
 
 			//ColorCardMaker.Create();
 			//SlugMaker.Create();
+			//PicFileNames.ConvertNames();
 
 			Console.WriteLine("Done.");
 			Console.ReadKey();
