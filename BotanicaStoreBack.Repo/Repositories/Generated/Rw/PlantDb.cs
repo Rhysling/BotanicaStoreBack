@@ -84,8 +84,11 @@ namespace BotanicaStoreBack.Repo.Repos
 			ppidListNew.Add(ppid);
 			var ppidListOut = ppidListNew.Select(a => new { a.PicId, a.Key, a.Pvt }).OrderBy(a => a.PicId).ToList();
 
-			sql = $"UPDATE Plants SET Pics = '{JsonConvert.SerializeObject(ppidListOut)}' WHERE PlantId = {ppid.PlantId}";
+			string nw = DateTime.UtcNow.ToString("s");
+			sql = $"UPDATE Plants SET Pics = '{JsonConvert.SerializeObject(ppidListOut)}', LastUpdate='{nw}' WHERE PlantId = {ppid.PlantId}";
 			db.Execute(sql);
+
+
 		}
 
 		public void DeletePictures(PlantPicId ppid)
@@ -104,7 +107,8 @@ namespace BotanicaStoreBack.Repo.Repos
 			var ppidListNew = ppidList.Where(a => a.PicId != ppid.PicId).ToList();
 			var ppidListOut = ppidListNew.Select(a => new { a.PicId, a.Key, a.Pvt }).OrderBy(a => a.PicId).ToList();
 
-			sql = $"UPDATE Plants SET Pics = '{JsonConvert.SerializeObject(ppidListOut)}' WHERE PlantId = {ppid.PlantId}";
+			string nw = DateTime.UtcNow.ToString("s");
+			sql = $"UPDATE Plants SET Pics = '{JsonConvert.SerializeObject(ppidListOut)}', LastUpdate='{nw}' WHERE PlantId = {ppid.PlantId}";
 			db.Execute(sql);
 		}
 
