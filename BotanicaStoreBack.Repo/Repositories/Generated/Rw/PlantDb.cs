@@ -18,7 +18,7 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public List<Plant> All()
 		{
-			return db.Fetch<Plant>("ORDER BY Genus, Species");
+			return db.Fetch<Plant>("WHERE (IsDeleted = 0) ORDER BY Genus, Species");
 		}
 
 		public List<Plant> ByFlag(string flag)
@@ -136,7 +136,9 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public bool Delete(int id)
 		{
-			db.Delete<Plant>(id);
+			string nw = DateTime.UtcNow.ToString("s");
+			string sql = $"UPDATE Plants SET IsListed = 0, IsFeatured = 0, LastUpdate='{nw}', Flag = null, IsDeleted = 1 WHERE PlantId = {id}";
+			db.Execute(sql);
 			return true;
 		}
 

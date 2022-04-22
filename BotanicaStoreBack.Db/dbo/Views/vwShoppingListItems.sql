@@ -1,7 +1,4 @@
 ﻿
-
-
-
 CREATE VIEW [dbo].[vwShoppingListItems]
 AS
 SELECT
@@ -27,3 +24,6 @@ FROM
 
 	LEFT OUTER JOIN PlantPrices pp
 	ON ((wi.PlantId = pp.PlantId) AND (wi.PotSizeId = pp.PotSizeId))
+
+WHERE
+	(p.IsDeleted = 0);

@@ -16,8 +16,11 @@
     [Slug]            VARCHAR (100)  CONSTRAINT [DF_Plants_Slug] DEFAULT ('') NOT NULL,
     [LastUpdate]      DATETIME       CONSTRAINT [DF_Plants_LastUpdate] DEFAULT ('1/1/1900') NOT NULL,
     [Flag]            VARCHAR (2)    NULL,
+    [IsDeleted]       BIT            CONSTRAINT [DF_Plants_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_tblPlantMaster] PRIMARY KEY CLUSTERED ([PlantId] ASC)
 );
+
+
 
 
 

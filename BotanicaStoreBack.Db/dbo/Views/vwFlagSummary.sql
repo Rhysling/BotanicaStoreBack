@@ -1,4 +1,5 @@
 ﻿
+
 CREATE VIEW [dbo].[vwFlagSummary]
 AS
 
@@ -11,7 +12,7 @@ FROM
 	Plants
 
 WHERE
-	(Flag is not null)
+	(Flag is not null) AND (IsDeleted = 0)
 
 GROUP BY
 	Flag

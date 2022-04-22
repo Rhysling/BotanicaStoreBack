@@ -1,5 +1,6 @@
 ﻿
 
+
 CREATE VIEW [dbo].[vwWishListFlat]
 AS
 SELECT
@@ -35,3 +36,6 @@ FROM
 
 	INNER JOIN Plants p
 	ON (pp.PlantId = p.PlantId)
+
+WHERE
+	(p.IsDeleted = 0);

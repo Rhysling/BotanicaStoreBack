@@ -86,6 +86,14 @@ namespace BotanicaStoreBack.Controllers.api.admin
 			db.SetListed(value);
 			return true;
 		}
+		
+		// POST api/admin/Plants/Delete?plantId=123
+		[HttpPost("[action]")]
+		public bool Delete([FromQuery] int plantId)
+		{
+			db.Delete(plantId);
+			return true;
+		}
 
 	}
 }

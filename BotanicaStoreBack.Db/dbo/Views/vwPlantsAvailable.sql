@@ -2,6 +2,7 @@
 
 
 
+
 CREATE VIEW [dbo].[vwPlantsAvailable]
 AS
 
@@ -25,4 +26,5 @@ FROM
 
 WHERE
 	(pp.IsAvailable = 1) AND
-	(p.IsListed = 1)
+	(p.IsListed = 1) AND
+	(p.IsDeleted = 0);

@@ -1,8 +1,4 @@
 ﻿
-
-
-
-
 CREATE VIEW [dbo].[vwPlantPriceSummary]
 AS
 
@@ -15,3 +11,6 @@ SELECT
 
 FROM
 	Plants
+
+WHERE
+	IsDeleted = 0;
