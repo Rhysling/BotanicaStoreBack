@@ -78,5 +78,8 @@ public partial class Plant : BotanicaStoreBackDB.Record<Plant>
 	// Computed Columns
 
 	public string LastUpdateFormatted => Utils.ToShortPT(LastUpdate);
-	
+
+	public string? CardLine1 { get; set; }
+	public string? CardLine2 { get; set; }
+
 }

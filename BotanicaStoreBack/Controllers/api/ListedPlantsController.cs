@@ -35,8 +35,11 @@ namespace BotanicaStoreBack.Controllers.api
 		public IActionResult FindBySlug([FromQuery] string slug)
 		{
 			var p = db.FindBySlug(slug);
+
 			if (p == null)
 				return NotFound();
+
+			(p.CardLine1, p.CardLine2, _) = ColorCards.Utils.LineSplit(p.Genus, p.Species);
 
 			return Ok(p);
 		}

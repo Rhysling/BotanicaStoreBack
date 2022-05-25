@@ -17,7 +17,7 @@ namespace BotanicaStoreBack.Repo.Repos
 			return wl;
 		}
 
-		public vwWishListEmail GetByUserId(int userId)
+		public vwWishListEmail? GetByUserId(int userId)
 		{
 			var wl = db.FirstOrDefault<vwWishListEmail>("WHERE (UserId = @0) AND (EmailedDate IS null) AND (IsClosed = 0)", userId);
 

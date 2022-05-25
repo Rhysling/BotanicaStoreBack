@@ -10,7 +10,7 @@ namespace BotanicaStoreBack.Repo.Repos
 			//no op.
 		}
 
-		public vwListedPlant FeaturedPlant()
+		public vwListedPlant? FeaturedPlant()
 		{
 			return db.Fetch<vwListedPlant>("WHERE (IsFeatured = 1)").FirstOrDefault();
 		}
