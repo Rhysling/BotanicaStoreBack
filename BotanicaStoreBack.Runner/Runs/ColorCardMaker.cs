@@ -12,7 +12,7 @@ public static class ColorCardMaker
 	{
 		// Set a path to document.
 		var dt = DateTime.Now;
-		string docPath = $@"D:\yy\tp7\ColorCards_{dt.ToString("yyMMdd-HHmmss")}.docx";
+		string docPath = $@"D:\yy\tp7\ColorCards_{dt:yyMMdd-HHmmss}.docx";
 
 		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
 
@@ -31,7 +31,7 @@ public static class ColorCardMaker
 	{
 		// Set a path to document.
 		var dt = DateTime.Now;
-		string docPath = $@"D:\yy\tp7\ColorCardTitles_{dt.ToString("yyMMdd-HHmmss")}.docx";
+		string docPath = $@"D:\yy\tp7\ColorCardTitles_{dt:yyMMdd-HHmmss}.docx";
 
 		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
 
@@ -51,7 +51,7 @@ public static class ColorCardMaker
 	{
 		// Set a path to document.
 		var dt = DateTime.Now;
-		string docPath = $@"D:\yy\tp7\Titles_{dt.ToString("yyMMdd-HHmmss")}.txt";
+		string docPath = $@"D:\yy\tp7\Titles_{dt:yyMMdd-HHmmss}.txt";
 
 		var sb = new System.Text.StringBuilder();
 

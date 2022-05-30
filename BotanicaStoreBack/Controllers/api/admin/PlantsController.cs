@@ -27,11 +27,11 @@ namespace BotanicaStoreBack.Controllers.api.admin
 			return db.All();
 		}
 
-		// GET api/<PlantsController>/5
-		[HttpGet("{id}")]
-		public string Get(int id)
+		// PUT api/admin/Plants/GetForIds *** [id list in body]
+		[HttpPut("[action]")]
+		public List<Plant> GetForIds([FromBody] int[] ids)
 		{
-			return "value";
+			return db.ByIds(ids);
 		}
 
 		// GET api/admin/Plants/FlagSummaries

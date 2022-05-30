@@ -26,13 +26,16 @@
 
   <ItemGroup>
     <Compile Include="Models\Core\AppSettings.cs" />
+    <Compile Include="Models\Core\PicAuditResult.cs" />
     <Compile Include="Models\Core\PlantIdName.cs" />
     <Compile Include="Models\Core\UserClient.cs" />
     <Compile Include="Models\Core\UserLogin.cs" />
+    <Compile Include="Services\Ext\LinqExtClass.cs" />
     <Compile Include="Services\FiltersAttributes\AdminAuthorizeAttribute.cs" />
     <Compile Include="Services\FiltersAttributes\TypeScriptModelAttribute.cs" />
     <Compile Include="Services\Mailer\MailgunService.cs" />
     <Compile Include="Services\Mailer\WishListMessage.cs" />
+    <Compile Include="Services\PicAudit.cs" />
     <Compile Include="Services\Settings.cs" />
   </ItemGroup>
 

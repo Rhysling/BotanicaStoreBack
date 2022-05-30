@@ -26,6 +26,17 @@ namespace BotanicaStoreBack.Repo.Repos
 			return db.Fetch<Plant>("WHERE (Flag = @0) ORDER BY Genus, Species", flag);
 		}
 
+		public List<Plant> ByIds(IEnumerable<int> ids)
+		{
+			return db.Fetch<Plant>($"WHERE (PlantId IN ({String.Join(',',ids)})) ORDER BY Genus, Species");
+		}
+
+		public List<Plant> AllWithPictures()
+		{
+			return db.Fetch<Plant>("WHERE (len(Pics) > 2) ORDER BY Genus, Species");
+		}
+
+
 		public int GetNextBigPicId(int PlantId)
 		{
 			string sql = "SELECT Pics FROM Plants WHERE (PlantId = @0)";

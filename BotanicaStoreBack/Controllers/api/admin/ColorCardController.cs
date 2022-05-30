@@ -24,7 +24,7 @@ public class ColorCardController : ControllerBase
 	[HttpGet("[action]/{flag}")]
 	public ActionResult ForFlag(string flag)
 	{
-		string fileName = $"ColorCards_{flag}_{DateTime.Now.ToString("yyMMdd-HHmmss")}.docx";
+		string fileName = $"ColorCards_{flag}_{DateTime.Now:yyMMdd-HHmmss}.docx";
 		var plants = db.ByFlag(flag);
 		var docBuilder = new DocBuilder(plants);
 		var bytes = docBuilder.Create();

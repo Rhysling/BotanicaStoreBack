@@ -26,6 +26,24 @@ namespace BotanicaStoreBack.Controllers.api.admin
 			this.db = db;
 		}
 
+		// GET api/admin/Pictures/GetAudit
+		[HttpGet("[action]")]
+		public IActionResult GetAudit()
+		{
+			var pa = new Services.PicAudit(opts, db);
+			return Ok(pa.GetAuditResults());
+
+		}
+
+		// POST api/admin/Pictures/MoveOrphans
+		[HttpPost("[action]")]
+		public IActionResult MoveOrphans()
+		{
+			var pa = new Services.PicAudit(opts, db);
+			return Ok(pa.MoveOrphans());
+
+		}
+
 
 		// POST api/admin/Pictures/SavePicture
 		[HttpPost("[action]")]
@@ -57,7 +75,7 @@ namespace BotanicaStoreBack.Controllers.api.admin
 					if (!isSmall)
 						picId = db.GetNextBigPicId(plantId);
 
-					string fileName = $"p{plantId.ToString("0000")}_{picId.ToString("00")}_{keyNow}.jpg";
+					string fileName = $"p{plantId:0000}_{picId:00}_{keyNow}.jpg";
 					string fullPath = Path.Combine(dir, fileName);
 
 					using (var stream = new FileStream(fullPath, FileMode.Create))

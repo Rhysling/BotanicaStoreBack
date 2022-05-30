@@ -2,17 +2,17 @@
 {
 	public class ConnStr
 	{
-		private static string val;
+		private static string? val;
 
 		public string Value {
 			get {
-				return val;
+				return val ?? "";
 			}
 			set {
 				val = value;
 			}
 		}
 
-		public static ConnStr Current => new ConnStr { Value = val };
+		public static ConnStr Current => new() { Value = val ?? "" };
 	}
 }
