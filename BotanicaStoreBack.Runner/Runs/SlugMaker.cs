@@ -13,7 +13,12 @@ namespace BotanicaStoreBack.Runner.Runs
 			using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
 
 			var plants = db.Fetch<Plant>(" ");
-			var helper = new SlugHelper();
+
+			var config = new SlugHelperConfiguration
+			{
+				DeniedCharactersRegex = @"[^a-zA-Z0-9\-_]"
+			};
+			var helper = new SlugHelper(config);
 
 			foreach (var p in plants)
 			{

@@ -63,7 +63,11 @@ namespace BotanicaStoreBack.Controllers.api.admin
 
 			if (String.IsNullOrWhiteSpace(plant.Slug))
 			{
-				var helper = new SlugHelper();
+				var config = new SlugHelperConfiguration
+				{
+					DeniedCharactersRegex = @"[^a-zA-Z0-9\-_]"
+				};
+				var helper = new SlugHelper(config);
 				plant.Slug = helper.GenerateSlug($"{plant.Genus} {plant.Species} {plant.PlantId}");
 				plant = db.Save(plant);
 			}
