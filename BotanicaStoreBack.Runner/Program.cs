@@ -11,11 +11,11 @@ namespace BotanicaStoreBack.Runner
 			//Console.Write(DtConversion.FromShoppingListAdmin());
 
 			//ColorCardMaker.Create();
-			//SlugMaker.Create();
+			SlugMaker.Create();
 			//PicFileNames.ConvertNames();
 			//ColorCardMaker.TestTitlesTxt();
 			//ColorCardMaker.TestTitles();
-			PicAudit.RunAuditClass();
+			//PicAudit.RunAuditClass();
 
 			Console.WriteLine("Done.");
 			Console.ReadKey();
