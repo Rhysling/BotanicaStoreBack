@@ -1,5 +1,6 @@
 ﻿
 
+
 CREATE VIEW [dbo].[vwListedPlants]
 AS
 SELECT       
@@ -7,10 +8,7 @@ SELECT
 	Genus,
 	Species, 
 	Family,
-	CASE
-		WHEN (trim(isnull(WebDescription, '')) <> '') THEN WebDescription
-		ELSE trim(isnull([Description], ''))
-	END AS [Description],
+	trim(isnull([Description], '')) AS [Description],
 	PlantSize, 
 	PlantType, 
 	PlantZone,

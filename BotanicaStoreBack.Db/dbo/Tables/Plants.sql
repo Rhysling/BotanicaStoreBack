@@ -4,7 +4,7 @@
     [Species]         VARCHAR (50)   NOT NULL,
     [Family]          VARCHAR (50)   NULL,
     [Description]     VARCHAR (1023) NULL,
-    [WebDescription]  VARCHAR (1023) NULL,
+    [Notes]           VARCHAR (1023) NULL,
     [PlantSize]       VARCHAR (50)   NULL,
     [PlantType]       VARCHAR (50)   NULL,
     [PlantZone]       VARCHAR (50)   NULL,
@@ -19,6 +19,8 @@
     [IsDeleted]       BIT            CONSTRAINT [DF_Plants_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_tblPlantMaster] PRIMARY KEY CLUSTERED ([PlantId] ASC)
 );
+
+
 
 
 

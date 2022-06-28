@@ -33,7 +33,7 @@ public partial class Plant : BotanicaStoreBackDB.Record<Plant>
 
 	[NPoco.Column]
 	[StringLength(1023)]
-	public string? WebDescription { get; set; }
+	public string? Notes { get; set; }
 
 	[NPoco.Column]
 	[StringLength(50)]
