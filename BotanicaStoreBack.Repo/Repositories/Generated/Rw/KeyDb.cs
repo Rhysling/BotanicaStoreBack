@@ -44,7 +44,7 @@ namespace BotanicaStoreBack.Repo.Repos
 		}
 
 
-		public Key FindBy(string id)
+		public Key? FindBy(string id)
 		{
 			return db.SingleOrDefaultById<Key>((object)id);
 		}

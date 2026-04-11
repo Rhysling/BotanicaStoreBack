@@ -47,12 +47,12 @@ namespace BotanicaStoreBack.Repo.Repos
 		}
 
 
-		public User FindById(int id)
+		public User? FindById(int id)
 		{
 			return db.SingleOrDefaultById<User>(id);
 		}
 
-		public User FindByEmail(string email)
+		public User? FindByEmail(string email)
 		{
 			return db.FirstOrDefault<User>("WHERE Email = @0", email);
 		}

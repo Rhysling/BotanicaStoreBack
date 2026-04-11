@@ -95,7 +95,7 @@ app.UseStaticFiles(new StaticFileOptions()
 	ContentTypeProvider = provider
 });
 
-app.UseRouting();
+//app.UseRouting();
 
 if (app.Environment.IsDevelopment())
 	app.UseCors(builder =>
@@ -111,7 +111,8 @@ app.UseAuthorization();
 
 Settings.AppSettings = app.Services.GetService<AppSettings>();
 
-app.UseEndpoints(endpoints => endpoints.MapControllers());
+//app.UseEndpoints(endpoints => endpoints.MapControllers());
+app.MapControllers();
 
 app.Run();
 

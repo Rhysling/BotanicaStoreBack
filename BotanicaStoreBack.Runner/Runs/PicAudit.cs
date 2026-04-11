@@ -47,7 +47,9 @@ public static class PicAudit
 
 		string orphanPath = Path.Combine(picFilePath, "orphans");
 
+#pragma warning disable CS0618 // Type or member is obsolete
 		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		var plants = db.Fetch<Plant>("WHERE (len(Pics) > 2) ORDER BY PlantId");
 

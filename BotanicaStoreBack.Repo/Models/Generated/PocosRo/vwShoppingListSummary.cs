@@ -7,9 +7,9 @@ namespace BotanicaStoreBack.Repo.Models
 	[ExplicitColumns]
 	public partial class vwShoppingListSummary : BotanicaStoreBackDB.Record<vwShoppingListSummary>
 	{
-		string createdDateFormatted = null;
-		string lastUpdateDateFormatted = null;
-		string emailedDateFormatted = null;
+		string? createdDateFormatted = null;
+		string? lastUpdateDateFormatted = null;
+		string? emailedDateFormatted = null;
 
 
 		[NPoco.Column]
@@ -30,11 +30,13 @@ namespace BotanicaStoreBack.Repo.Models
 		[NPoco.Column]
 		public bool IsClosed { get; set; }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		[NPoco.Column]
 		public string UserFullName { get; set; }
 
 		[NPoco.Column]
 		public string Email { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 		[NPoco.Column]
 		public int TotalCount { get; set; }

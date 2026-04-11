@@ -20,19 +20,21 @@ namespace BotanicaStoreBack.Repo.Models
 
 		[NPoco.Column]
 		[StringLength(50)]
-		public string EventTime { get; set; }
+		public string? EventTime { get; set; }
 
 		[NPoco.Column]
 		[StringLength(50)]
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		public string Title { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 		[NPoco.Column]
 		[StringLength(100)]
-		public string Location { get; set; }
+		public string? Location { get; set; }
 
 		[NPoco.Column]
 		[StringLength(500)]
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		[NPoco.Column]
 		public bool IsSpecial { get; set; }

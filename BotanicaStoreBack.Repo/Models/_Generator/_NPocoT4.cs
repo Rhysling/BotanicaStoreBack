@@ -13,7 +13,9 @@ namespace BotanicaStoreBack.Repo.Models
 		//}
 
 		public BotanicaStoreBackDB(ConnStr connStr)
-			: base(connStr.Value, DatabaseType.SqlServer2012, SqlClientFactory.Instance)
+#pragma warning disable CS0618 // Type or member is obsolete
+			: base(connStr.Value, NPoco.DatabaseType.SqlServer2012, SqlClientFactory.Instance)
+#pragma warning restore CS0618 // Type or member is obsolete
 		{
 			CommonConstruct();
 		}
@@ -25,7 +27,9 @@ namespace BotanicaStoreBack.Repo.Models
 			BotanicaStoreBackDB GetInstance();
 		}
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		public static IFactory Factory { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		public static BotanicaStoreBackDB GetInstance()
 		{
 			if (_instance!=null)
@@ -37,7 +41,7 @@ namespace BotanicaStoreBack.Repo.Models
 				return new BotanicaStoreBackDB(ConnStr.Current);
 		}
 
-		[ThreadStatic] static BotanicaStoreBackDB _instance;
+		[ThreadStatic] static BotanicaStoreBackDB? _instance;
 
 		protected override void OnBeginTransaction()
 		{
@@ -66,11 +70,11 @@ namespace BotanicaStoreBack.Repo.Models
 			public static int Delete(Sql sql) { return repo.Delete<T>(sql); }
 			public static int Delete(object primaryKey) { return repo.Delete<T>(primaryKey); }
 			public static bool Exists(object primaryKey) { return repo.Exists<T>(primaryKey); }
-			public static T SingleOrDefault(object primaryKey) { return repo.SingleOrDefaultById<T>(primaryKey); }
-			public static T SingleOrDefault(string sql, params object[] args) { return repo.SingleOrDefault<T>(sql, args); }
-			public static T SingleOrDefault(Sql sql) { return repo.SingleOrDefault<T>(sql); }
-			public static T FirstOrDefault(string sql, params object[] args) { return repo.FirstOrDefault<T>(sql, args); }
-			public static T FirstOrDefault(Sql sql) { return repo.FirstOrDefault<T>(sql); }
+			public static T? SingleOrDefault(object primaryKey) { return repo.SingleOrDefaultById<T>(primaryKey); }
+			public static T? SingleOrDefault(string sql, params object[] args) { return repo.SingleOrDefault<T>(sql, args); }
+			public static T? SingleOrDefault(Sql sql) { return repo.SingleOrDefault<T>(sql); }
+			public static T? FirstOrDefault(string sql, params object[] args) { return repo.FirstOrDefault<T>(sql, args); }
+			public static T? FirstOrDefault(Sql sql) { return repo.FirstOrDefault<T>(sql); }
 			public static T Single(object primaryKey) { return repo.SingleById<T>(primaryKey); }
 			public static T Single(string sql, params object[] args) { return repo.Single<T>(sql, args); }
 			public static T Single(Sql sql) { return repo.Single<T>(sql); }

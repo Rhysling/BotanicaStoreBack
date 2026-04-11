@@ -54,7 +54,7 @@ namespace BotanicaStoreBack.Repo.Repos
 			return db.Fetch<Calendar>(sql);
 		}
 
-		public Calendar NextFuture()
+		public Calendar? NextFuture()
 		{
 			return AllFuture().FirstOrDefault();
 		}

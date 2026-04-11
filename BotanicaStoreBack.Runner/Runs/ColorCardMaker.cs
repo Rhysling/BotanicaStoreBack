@@ -14,7 +14,9 @@ public static class ColorCardMaker
 		var dt = DateTime.Now;
 		string docPath = $@"D:\yy\tp7\ColorCards_{dt:yyMMdd-HHmmss}.docx";
 
+#pragma warning disable CS0618 // Type or member is obsolete
 		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		var plants = db.Fetch<Plant>("WHERE Flag = '5' ORDER BY Genus, Species");
 
@@ -33,7 +35,9 @@ public static class ColorCardMaker
 		var dt = DateTime.Now;
 		string docPath = $@"D:\yy\tp7\ColorCardTitles_{dt:yyMMdd-HHmmss}.docx";
 
+#pragma warning disable CS0618 // Type or member is obsolete
 		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		//"WHERE Flag = '5' ORDER BY Genus, Species"
 		var plants = db.Fetch<Plant>("ORDER BY Genus, Species");
@@ -55,7 +59,9 @@ public static class ColorCardMaker
 
 		var sb = new System.Text.StringBuilder();
 
+#pragma warning disable CS0618 // Type or member is obsolete
 		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		//"WHERE Flag = '5' ORDER BY Genus, Species"
 		var plants = db.Fetch<Plant>("ORDER BY Genus, Species");

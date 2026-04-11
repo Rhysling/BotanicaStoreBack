@@ -10,7 +10,9 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public RepositoryBase(string connStr)
 		{
+#pragma warning disable CS0618 // Type or member is obsolete
 			db = new NPoco.Database(connStr, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+#pragma warning restore CS0618 // Type or member is obsolete
 		}
 
 		public void Dispose()

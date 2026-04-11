@@ -13,7 +13,8 @@ namespace BotanicaStoreBack.Repo.Models
 		[NPoco.Column] 
 		public int PlantId { get; set; }
 
-		[NPoco.Column] 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+		[NPoco.Column]
 		public string PlantName { get; set; }
 
 		[NPoco.Column] 
@@ -21,6 +22,7 @@ namespace BotanicaStoreBack.Repo.Models
 
 		[NPoco.Column] 
 		public string PotDescription { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 		[NPoco.Column] 
 		public decimal Price { get; set; }

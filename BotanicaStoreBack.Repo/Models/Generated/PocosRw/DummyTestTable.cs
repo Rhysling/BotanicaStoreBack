@@ -15,6 +15,7 @@ namespace BotanicaStoreBack.Repo.Models
 		[NPoco.Column]
 		public int FirstKey { get; set; }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		[NPoco.Column]
 		[StringLength(50)]
 		[Required()]
@@ -33,6 +34,7 @@ namespace BotanicaStoreBack.Repo.Models
 
 		[NPoco.Column]
 		public byte[] ByteThing { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 		[NPoco.Column]
 		public byte[]? BigByteThing { get; set; }

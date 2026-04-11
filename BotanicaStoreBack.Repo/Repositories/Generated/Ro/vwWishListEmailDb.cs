@@ -10,10 +10,12 @@ namespace BotanicaStoreBack.Repo.Repos
 			//no op.
 		}
 
-		public vwWishListEmail GetByWlId(int wlId)
+		public vwWishListEmail? GetByWlId(int wlId)
 		{
 			var wl = db.FirstOrDefault<vwWishListEmail>("WHERE (WlId = @0)", wlId);
-			wl.Items = db.Fetch<vwWishListEmailItem>("WHERE (WlId = @0)", wlId);
+
+			wl?.Items = db.Fetch<vwWishListEmailItem>("WHERE (WlId = @0)", wlId);
+
 			return wl;
 		}
 

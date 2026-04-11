@@ -47,7 +47,7 @@ namespace BotanicaStoreBack.Repo.Repos
 		}
 
 
-		public DummyTestTable FindBy(int id)
+		public DummyTestTable? FindBy(int id)
 		{
 			return db.SingleOrDefaultById<DummyTestTable>(id);
 		}

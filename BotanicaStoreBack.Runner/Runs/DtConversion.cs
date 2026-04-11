@@ -12,6 +12,7 @@ namespace BotanicaStoreBack.Runner.Runs
 		{
 			var sb = new StringBuilder();
 
+#pragma warning disable CS0618 // Type or member is obsolete
 			using (var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance))
 			{
 				var sm = db.Fetch<vwShoppingListSummary>("");
@@ -46,6 +47,7 @@ namespace BotanicaStoreBack.Runner.Runs
 				//sb.AppendLine($"{s.CreatedDate} - {s.LastUpdateDate} - {(s.EmailedDate.HasValue ? s.EmailedDate.Value : "open")}");
 				//sb.AppendLine($"Local: {pstTime} {(pstZone.IsDaylightSavingTime(pstTime) ? pstZone.DaylightName : pstZone.StandardName)}.");
 			}
+#pragma warning restore CS0618 // Type or member is obsolete
 
 			return sb.ToString();
 		}
