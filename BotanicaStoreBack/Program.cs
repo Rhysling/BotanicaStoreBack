@@ -55,6 +55,12 @@ builder.Services.AddTransient<vwShoppingListSummaryDb>();
 
 builder.Services.AddHttpClient<MailgunService>();
 
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("DevCors", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+	options.AddPolicy("ProdCors", policy => policy.WithOrigins("https://www.botanicaplants.com", "https://botanicaplants.com").AllowAnyMethod().AllowAnyHeader());
+});
+
 builder.Services.AddControllers();
 
 
@@ -98,13 +104,9 @@ app.UseStaticFiles(new StaticFileOptions()
 //app.UseRouting();
 
 if (app.Environment.IsDevelopment())
-	app.UseCors(builder =>
-	{
-		builder
-		.AllowAnyOrigin()
-		.AllowAnyMethod()
-		.AllowAnyHeader();
-	});
+	app.UseCors("DevCors");
+else
+	app.UseCors("ProdCors");
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -115,5 +117,3 @@ Settings.AppSettings = app.Services.GetService<AppSettings>();
 app.MapControllers();
 
 app.Run();
-
-
