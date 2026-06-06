@@ -318,3 +318,21 @@ GROUP BY
 	u.FullName,
 	u.Email
 /* vwShoppingListSummary(WlId,UserId,CreatedDate,LastUpdateDate,EmailedDate,IsClosed,UserFullName,Email,TotalCount,TotalPretax) */;
+CREATE VIEW vwPlantPriceSummary
+AS
+
+SELECT
+	PlantId,
+	Genus,
+	Species,
+	--dbo.fnPricesAvailable_ByPlant(PlantId, 1) AS Available,
+	--dbo.fnPricesAvailable_ByPlant(PlantId, 0) AS NotAvailable
+	'Not implemented' AS Available,
+	'Not implemented' AS NotAvailable
+
+FROM
+	Plants
+
+WHERE
+	IsDeleted = 0
+/* vwPlantPriceSummary(PlantId,Genus,Species,Available,NotAvailable) */;

@@ -28,14 +28,14 @@ string dir = Directory.GetCurrentDirectory();
 string dbPath;
 
 if (aps.IsProduction)
-	dbPath = Path.Combine(dir, @"Db\");
+	dbPath = Path.Combine(dir, @"Db\BotanicaProdSqlite.db");
 else
 {
 	int ix = dir.IndexOf(@"BotanicaStoreBack\BotanicaStoreBack", StringComparison.CurrentCultureIgnoreCase);
-	dbPath = dir[0..ix] + @"BotanicaStoreBack\BotanicaStoreBack\Db\";
+	dbPath = dir[0..ix] + @"BotanicaStoreBack\BotanicaStoreBack\Db\BotanicaDevSqlite.db";
 }
 
-var connStr = new ConnStr { Value = $"Data Source={Path.Combine(dbPath, "BotanicaDevSqlite.db")}" };
+var connStr = new ConnStr { Value = $"Data Source={dbPath}" };
 
 builder.Services.AddSingleton<AppSettings>(aps);
 builder.Services.AddSingleton<ConnStr>(connStr);
@@ -90,6 +90,11 @@ else
 	app.UseHttpsRedirection();
 }
 
+if (app.Environment.IsDevelopment())
+	app.UseCors("DevCors");
+else
+	app.UseCors("ProdCors");
+
 app.Use(async (context, next) =>
 {
 	await next();
@@ -113,13 +118,6 @@ app.UseStaticFiles(new StaticFileOptions()
 {
 	ContentTypeProvider = provider
 });
-
-//app.UseRouting();
-
-if (app.Environment.IsDevelopment())
-	app.UseCors("DevCors");
-else
-	app.UseCors("ProdCors");
 
 app.UseAuthentication();
 app.UseAuthorization();
