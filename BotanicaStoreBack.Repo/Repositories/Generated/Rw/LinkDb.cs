@@ -66,10 +66,7 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public void ReseedKey()
 		{
-			string sql ="DECLARE @@MaxId int; ";
-			sql += "SELECT @@MaxId = MAX(LinkId) FROM Links; ";
-			sql += "DBCC CHECKIDENT ('Links', RESEED, @@MaxId) WITH NO_INFOMSGS;";
-			
+			string sql = "UPDATE sqlite_sequence SET seq = (SELECT COALESCE(MAX(LinkId), 0) FROM Links) WHERE name = 'Links'";
 			db.Execute(sql);
 		}
 

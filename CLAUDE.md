@@ -36,6 +36,7 @@ There are no test projects. There is no CI/CD configuration.
 ### Key libraries
 
 - **NPoco 6.2.0** — micro-ORM; no Entity Framework
+- **Microsoft.Data.Sqlite** — SQLite ADO.NET driver
 - **JwtBearer** — JWT authentication
 - **Mailgun** — email via HTTP API
 - **Slugify.Core** — URL slug generation
@@ -43,9 +44,9 @@ There are no test projects. There is no CI/CD configuration.
 
 ### Data access
 
-All repositories extend `RepositoryBase` (in `Repo/Repositories/`), which manages the NPoco `Database` instance. Entity models live in `Repo/Models/Generated/` (NPoco T4-generated from schema). There are both table models and view models (`vwListedPlant`, `vwWishListEmail`, etc.). Some entity properties store JSON (e.g., `Plant.Pics` is a JSON array of `PlantPicId` objects).
+All repositories extend `RepositoryBase` (in `Repo/Repositories/`), which manages the NPoco `Database` instance configured for SQLite (`DatabaseType.SQLite`, `SqliteFactory`). Entity models live in `Repo/Models/Generated/` (NPoco T4-generated from schema). There are both table models and view models (`vwListedPlant`, `vwWishListEmail`, etc.). Some entity properties store JSON (e.g., `Plant.Pics` is a JSON array of `PlantPicId` objects).
 
-Repositories are registered as transient services and injected into controllers. Connection string comes from the `BotanicaStoreDb_ConnectionString` environment variable (or appsettings).
+Repositories are registered as transient services and injected into controllers. The SQLite database file path is resolved at startup in `Program.cs`: in production it is `<cwd>/Db/BotanicaDevSqlite.db`; in development it is resolved relative to the `BotanicaStoreBack/Db/` folder within the repo.
 
 ### Endpoints
 
@@ -56,13 +57,12 @@ Admin endpoints are protected by `AdminAuthorizeAttribute` (JWT required; IsAdmi
 
 ### Configuration
 
-`appsettings.json` holds non-sensitive config (JWT Issuer, Mailgun URLs, TaxRate `0.1025`, IsDev flag). Sensitive values are injected via environment variables:
+`appsettings.json` holds non-sensitive config (JWT Issuer, Mailgun URLs, TaxRate `0.1025`, IsProductionString flag). Sensitive values are injected via environment variables:
 
-- `BotanicaStoreDb_ConnectionString`
 - `BotanicaStoreAdminPw`
 - Mailgun auth key
 
-Development (`appsettings.Development.json`) sets `IsDev: true`, which disables HTTPS redirect and opens CORS to all origins.
+`AppSettings.IsProduction` is `true` unless `IsProductionString` is the literal string `"false"`. Development (`appsettings.Development.json`) sets `IsProductionString: "false"`, which disables HTTPS redirect, opens CORS to all origins, and resolves the SQLite DB path from the repo rather than the deploy directory.
 
 `AppSettings.cs` (`Models/Core/`) exposes a static `Settings` singleton populated at startup.
 

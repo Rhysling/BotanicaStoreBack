@@ -2,11 +2,11 @@
 using BotanicaStoreBack.Repo.Models;
 using BotanicaStoreBack.Repo.Repos;
 using BotanicaStoreBack.Services.LinqExt;
+using Microsoft.Data.Sqlite;
 using Newtonsoft.Json;
 using NPoco;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,10 +18,11 @@ public static class PicAudit
 	public static void RunAuditClass()
 	{
 		var aps = new AppSettings();
-		aps.IsDev = true;
+		aps.IsProductionString = "false";
 
 		var cs = new ConnStr();
-		cs.Value = "Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;";
+		string dbPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\BotanicaStoreBack\Db\BotanicaDevSqlite.db"));
+		cs.Value = $"Data Source={dbPath}";
 		var db = new PlantDb(cs);
 
 		var pa = new BotanicaStoreBack.Services.PicAudit(aps, db);
@@ -47,11 +48,10 @@ public static class PicAudit
 
 		string orphanPath = Path.Combine(picFilePath, "orphans");
 
-#pragma warning disable CS0618 // Type or member is obsolete
-		using var db = new NPoco.Database("Server=localhost;Database=BotanicaStoreDb;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance);
-#pragma warning restore CS0618 // Type or member is obsolete
+		string dbPathH = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\BotanicaStoreBack\Db\BotanicaDevSqlite.db"));
+		using var db = new NPoco.Database($"Data Source={dbPathH}", DatabaseType.SQLite, SqliteFactory.Instance);
 
-		var plants = db.Fetch<Plant>("WHERE (len(Pics) > 2) ORDER BY PlantId");
+		var plants = db.Fetch<Plant>("WHERE (length(Pics) > 2) ORDER BY PlantId");
 
 		var dbPicNames = plants.SelectMany(p =>
 			JsonConvert.DeserializeObject<List<PlantPicId>>(p.Pics)

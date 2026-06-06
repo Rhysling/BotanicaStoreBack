@@ -60,7 +60,7 @@ namespace BotanicaStoreBack.Controllers.api.admin
 					string keyNow = DateTime.Now.ToString("yyMMdd-HHmmss");
 					string dir = Directory.GetCurrentDirectory();
 
-					if (opts.IsDev)
+					if (!opts.IsProduction)
 						dir = dir.Replace(@"BotanicaStoreBack\BotanicaStoreBack", @"BotanicaStoreFront\public\plantpics");
 					else
 						dir = Path.Combine(dir, @"wwwroot\plantpics");

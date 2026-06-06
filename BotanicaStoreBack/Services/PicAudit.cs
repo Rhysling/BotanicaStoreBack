@@ -24,7 +24,7 @@ public class PicAudit
 
 		picFilePath = Directory.GetCurrentDirectory();
 
-		if (aps.IsDev)
+		if (!aps.IsProduction)
 		{
 			int ix = picFilePath.IndexOf(@"BotanicaStoreBack\BotanicaStoreBack");
 			picFilePath = picFilePath.Remove(ix + 35);

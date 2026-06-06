@@ -1,18 +1,17 @@
-﻿using NPoco;
-using System.Data.SqlClient;
+﻿using Microsoft.Data.Sqlite;
+using NPoco;
 
 namespace BotanicaStoreBack.Repo.Repos
 {
 	public abstract class RepositoryBase : IDisposable
 	{
-		protected NPoco.Database db;
+		protected Database db;
 		bool _disposed = false;
 
 		public RepositoryBase(string connStr)
 		{
-#pragma warning disable CS0618 // Type or member is obsolete
-			db = new NPoco.Database(connStr, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
-#pragma warning restore CS0618 // Type or member is obsolete
+			//db = new NPoco.Database(connStr, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+			db = new Database(connStr, DatabaseType.SQLite, SqliteFactory.Instance);
 		}
 
 		public void Dispose()

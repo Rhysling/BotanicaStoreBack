@@ -33,7 +33,7 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public List<Plant> AllWithPictures()
 		{
-			return db.Fetch<Plant>("WHERE (len(Pics) > 2) ORDER BY Genus, Species");
+			return db.Fetch<Plant>("WHERE (length(Pics) > 2) ORDER BY Genus, Species");
 		}
 
 

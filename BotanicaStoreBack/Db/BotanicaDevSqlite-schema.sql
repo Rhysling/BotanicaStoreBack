@@ -183,3 +183,138 @@ FROM
 	) w
 	ON (u.UserId = w.UserId)
 /* vwUserDetails(UserId,Email,FullName,IsAdmin,CreatedDate,LastLoginDate,LoginCount,CountAll,CountPending,CountClosed) */;
+CREATE VIEW vwListedPlants
+AS
+SELECT       
+	p.PlantId, 
+	Genus,
+	Species, 
+	Family,
+	trim(coalesce(Description, '')) AS Description,
+	PlantSize, 
+	PlantType, 
+	PlantZone,
+	PictureLocation,
+	IsNwNative,
+	Pics,
+	IsFeatured,
+	p.Slug,
+	coalesce(a.Availability, '') AS Availability
+
+FROM
+	Plants p
+
+	LEFT OUTER JOIN
+	(
+	SELECT DISTINCT
+		PlantId,
+		--dbo.fnPricesAvailable_ByPlant (PlantId,1) AS Availability
+		'Needs implementation' AS Availability
+	FROM
+		PlantPrices
+	WHERE
+		(IsAvailable = 1)
+	) a
+	ON (p.PlantId = a.PlantId)
+
+WHERE
+	(IsListed = 1) AND (p.IsDeleted = 0)
+/* vwListedPlants(PlantId,Genus,Species,Family,Description,PlantSize,PlantType,PlantZone,PictureLocation,IsNwNative,Pics,IsFeatured,Slug,Availability) */;
+CREATE VIEW vwPlantsAvailable
+AS
+
+SELECT
+	p.PlantId,
+	p.Genus + ' ' + p.Species AS PlantName,
+	ps.Id AS PotSizeId,
+	ps.PotDescription,
+	ps.PotShorthand,
+	ps.SortOrder,
+	pp.Price
+
+FROM
+	Plants p
+
+	INNER JOIN PlantPrices pp
+	ON (p.PlantId = pp.PlantId)
+
+	INNER JOIN PotSizes ps
+	ON (pp.PotSizeId = ps.Id)
+
+WHERE
+	(pp.IsAvailable = 1) AND
+	(p.IsListed = 1) AND
+	(p.IsDeleted = 0)
+/* vwPlantsAvailable(PlantId,PlantName,PotSizeId,PotDescription,PotShorthand,SortOrder,Price) */;
+CREATE VIEW vwWishListFlat
+AS
+SELECT
+	w.UserId,
+	w.CreatedDate,
+	w.LastUpdateDate,
+	w.EmailedDate,
+	w.IsClosed,
+	wi.WlId,
+	wi.PlantId,
+	p.Genus + ' ' + p.Species AS PlantName,
+	wi.PotSizeId,
+	ps.PotDescription,
+	ps.SortOrder,
+	wi.Price,
+	wi.Qty,
+	pp.Price AS CurrentPrice,
+	pp.IsAvailable AS IsCurrentlyAvailable
+
+FROM
+	(
+	WishLists w
+
+	INNER JOIN WishListItems wi
+	ON (w.WlId = wi.WlId)
+
+	INNER JOIN PotSizes ps
+	ON (wi.PotSizeId = ps.Id)
+	)
+
+	LEFT OUTER JOIN PlantPrices pp
+	ON ((wi.PlantId = pp.PlantId) AND (wi.PotSizeId = pp.PotSizeId))
+
+	INNER JOIN Plants p
+	ON (pp.PlantId = p.PlantId)
+
+WHERE
+	(p.IsDeleted = 0)
+/* vwWishListFlat(UserId,CreatedDate,LastUpdateDate,EmailedDate,IsClosed,WlId,PlantId,PlantName,PotSizeId,PotDescription,SortOrder,Price,Qty,CurrentPrice,IsCurrentlyAvailable) */;
+CREATE VIEW vwShoppingListSummary
+AS
+SELECT
+	w.WlId,
+	w.UserId,
+	w.CreatedDate,
+	w.LastUpdateDate,
+	w.EmailedDate,
+	w.IsClosed,
+	u.FullName AS UserFullName,
+	u.Email,
+	sum(wi.Qty) AS TotalCount,
+	sum(wi.Qty * wi.Price) AS TotalPretax
+
+FROM
+	WishLists w
+
+	INNER JOIN WishListItems wi
+	ON (w.WlId = wi.WlId)
+
+	INNER JOIN Users u
+	ON (w.UserId = u.UserId)
+
+GROUP BY
+	w.WlId,
+	w.UserId,
+	w.CreatedDate,
+	w.LastUpdateDate,
+	w.EmailedDate,
+	w.IsClosed,
+	u.FullName,
+	u.Email
+/* vwShoppingListSummary(WlId,UserId,CreatedDate,LastUpdateDate,EmailedDate,IsClosed,UserFullName,Email,TotalCount,TotalPretax) */;

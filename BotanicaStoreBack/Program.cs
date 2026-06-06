@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.IO;
 using System.Text;
 
@@ -20,9 +21,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.Configure<AppSettings>(builder.Configuration);
-
 var aps = builder.Configuration.Get<AppSettings>();
-var connStr = new ConnStr { Value = aps.BotanicaStoreDb_ConnectionString };
+
+//var connStr = new ConnStr { Value = aps.BotanicaStoreDb_ConnectionString };
+string dir = Directory.GetCurrentDirectory();
+string dbPath;
+
+if (aps.IsProduction)
+	dbPath = Path.Combine(dir, @"Db\");
+else
+{
+	int ix = dir.IndexOf(@"BotanicaStoreBack\BotanicaStoreBack", StringComparison.CurrentCultureIgnoreCase);
+	dbPath = dir[0..ix] + @"BotanicaStoreBack\BotanicaStoreBack\Db\";
+}
+
+var connStr = new ConnStr { Value = $"Data Source={Path.Combine(dbPath, "BotanicaDevSqlite.db")}" };
 
 builder.Services.AddSingleton<AppSettings>(aps);
 builder.Services.AddSingleton<ConnStr>(connStr);

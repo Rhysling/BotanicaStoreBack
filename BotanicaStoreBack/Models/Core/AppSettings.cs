@@ -7,7 +7,8 @@ public class AppSettings
 	public double TaxRate { get; set; }
 	public AS_Jwt Jwt { get; set; }
 	public AS_Mailgun Mailgun { get; set; }
-	public bool IsDev { get; set; }
+	public string IsProductionString { get; set; } = "na";
+	public bool IsProduction => IsProductionString != "false";
 }
 
 public class AS_Jwt

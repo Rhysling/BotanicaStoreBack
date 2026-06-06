@@ -6,15 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Db\**" />
     <Compile Remove="Models\**" />
     <Compile Remove="Repositories\**" />
     <Compile Remove="Services\**" />
+    <Content Remove="Db\**" />
     <Content Remove="Models\**" />
     <Content Remove="Repositories\**" />
     <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Db\**" />
     <EmbeddedResource Remove="Models\**" />
     <EmbeddedResource Remove="Repositories\**" />
     <EmbeddedResource Remove="Services\**" />
+    <None Remove="Db\**" />
     <None Remove="Models\**" />
     <None Remove="Repositories\**" />
     <None Remove="Services\**" />
@@ -43,6 +47,7 @@
     <PackageReference Include="Azure.Identity" Version="1.21.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.8" />
     <PackageReference Include="NPoco" Version="6.2.0" />
     <PackageReference Include="NPoco.SqlServer" Version="6.2.0" />
     <PackageReference Include="Slugify.Core" Version="5.1.1" />

@@ -49,7 +49,7 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public List<Calendar> AllFuture()
 		{
-			string refDate = DateTime.Now.ToShortDateString();
+			string refDate = DateTime.Now.ToString("yyyy-MM-dd");
 			string sql = $"WHERE (BeginDate >= '{refDate}') OR (EndDate >= '{refDate}') ORDER BY BeginDate";
 			return db.Fetch<Calendar>(sql);
 		}
@@ -67,10 +67,7 @@ namespace BotanicaStoreBack.Repo.Repos
 
 		public void ReseedKey()
 		{
-			string sql = "DECLARE @@MaxId int; ";
-			sql += "SELECT @@MaxId = MAX(ItemId) FROM Calendar; ";
-			sql += "DBCC CHECKIDENT ('Calendar', RESEED, @@MaxId) WITH NO_INFOMSGS;";
-
+			string sql = "UPDATE sqlite_sequence SET seq = (SELECT COALESCE(MAX(ItemId), 0) FROM Calendar) WHERE name = 'Calendar'";
 			db.Execute(sql);
 		}
 

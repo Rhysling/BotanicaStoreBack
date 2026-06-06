@@ -1,18 +1,17 @@
-﻿namespace BotanicaStoreBack.Repo.Models
+﻿namespace BotanicaStoreBack.Repo.Models;
+
+public class ConnStr
 {
-	public class ConnStr
-	{
-		private static string? val;
+	private static string? val;
 
-		public string Value {
-			get {
-				return val ?? "";
-			}
-			set {
-				val = value;
-			}
+	public string Value {
+		get {
+			return val ?? "";
 		}
-
-		public static ConnStr Current => new() { Value = val ?? "" };
+		set {
+			val = value;
+		}
 	}
+
+	public static ConnStr Current => new() { Value = val ?? "" };
 }
