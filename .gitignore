@@ -160,11 +160,11 @@ ClientBin/
 *.publishsettings
 orleans.codegen.cs
 
-# SQL Server files
+# SQL/SQLite Server files
 *.mdf
 *.ldf
 *.ndf
-
+*.db
 
 
 # Microsoft Fakes
